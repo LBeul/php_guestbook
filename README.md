@@ -5,5 +5,5 @@ This repo contains the files for a school project. The project's goal is to set 
 ## Tasks and Responsibilities
 
 - **Backend Development and Database Modelling**: Bartosz Burgiel
-- **Frontend Development and UI Design: Louis Beul
+- **Frontend Development and UI Design**: Louis Beul
 
