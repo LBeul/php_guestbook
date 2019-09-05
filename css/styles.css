@@ -4,11 +4,15 @@ body {
 
 .container {
   width: 80vw;
-  height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  text-align: center;
+}
+
+#form-wrapper {
+  height: 90vh;
 }
 
 header {
@@ -34,4 +38,8 @@ input {
 #textarea {
   height: 20vh;
   width: 60vw;
+}
+
+#admin-link {
+  display: block;
 }

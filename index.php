@@ -11,7 +11,7 @@
 		if(!isset($_POST['submit']))
 		{
 			echo "
-				<div class='container'>
+				<div class='container' id='form-wrapper'>
 					<header>Willkommen im Gästebuch</header>
 					<div id='description'>
 						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
@@ -120,6 +120,8 @@
 	?>
 
 	<!-- Make a pretty button out of it-->
-	<a href="./src/admin.php">Admin-Login</a>
+	<div class='container'>
+			<a href="./src/admin.php">Admin-Login</a>
+	</div>
 </body>
 </html>
