@@ -120,6 +120,6 @@
 	?>
 
 	<!-- Make a pretty button out of it-->
-	<a href="/php_guestbook/src/admin.php">Admin</a>
+	<a href="./admin.php">Admin-Login</a>
 </body>
 </html>
