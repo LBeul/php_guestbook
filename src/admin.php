@@ -67,6 +67,7 @@
 					//print row
 					$temp->printRow();
 
+					echo $temp->generateKey();
 					//put $temp into array
 					array_push($allEntries, $temp);
 				}

@@ -76,6 +76,32 @@
 		}
 
 
+		// Generate unique ID for every entry
+		// ID consits of:
+		// First 3 characters of name and last name
+		// Mil;iseconds from current time
+		// First and last 3 letters from the entry
+		function generateKey() {
+			
+			//first 3 characters of name 
+			$firstName = substr($this->firstName, 0, 3);
+			
+			//last 3 characters of name
+			$lastName  = substr($this->lastName, 0, 3);
+
+			//get milliseconds
+			$millisec = round(microtime(true) * 1000);		
+
+			//first 3 characters of entry
+			$firstEntry = substr($this->userEntry, 0, 3);
+			
+			//last 3 characters of entry
+			$lastEntry = substr($this->userEntry, strlen($this->userEntry)-4, strlen($this->userEntry)-1);
+
+			return $firstName.$lastName.$millisec.$firstEntry.$lastEntry;
+		}
+
+
 	}
 
 ?>

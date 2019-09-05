@@ -2,5 +2,5 @@
 
 CREATE TABLE guestbookEntry (
 	entry LONGTEXT,
-	userEntryKey int
+	userEntryKey VARCHAR(256)
 )
