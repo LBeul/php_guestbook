@@ -36,6 +36,22 @@
 		}
 		else
 		{
+			//gather user input 
+			$firstName = $_POST['firstName'];
+			$lastName = $_POST['lastName'];
+			$userMail = $_POST['userMail'];
+
+			//connect to database
+			$dbConnection = mysqli_connect("localhost", "root", "", "bbs.guestbook");
+
+			//define quaries
+			$dbSelectAll 		= "SELECT * 
+							 	   FROM bbs.guestbook;";
+
+			$dbInsertUserInput 	= "INSERT INTO bss.guestbook
+								   ('$firstName', '$lastName', '$userMail', 'date('Y-m-d')');";
+
+			
 			echo "works";
 		}
 
