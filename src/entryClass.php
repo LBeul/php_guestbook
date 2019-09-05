@@ -22,7 +22,7 @@
 		}
 
 		function setLastName($lastName) {
-			$this->firstName = $lastName;
+			$this->lastName = $lastName;
 		}
 
 		function getUserEmail() {
@@ -51,7 +51,7 @@
 
 
 		//print entry as table row 
-		function print() {
+		function printRow() {
 			echo "<tr>
 					<td>$this->firstName</td>;
 					<td>$this->lastName</td>;
@@ -60,6 +60,17 @@
 					<td>$this->entryDate</td>;
 				</tr>";
 		}
+
+		//generates WHERE - part of a sql query
+		function generateQuery() {
+			return "WHERE firstName = '$this->firstName'
+					lastName = '$this->lastName'
+					userEmail = '$this->userEmail'
+					userEntry = '$this->userEntry'
+					entryDate = '$this->entryDate'";
+		}
+
+
 	}
 
 ?>

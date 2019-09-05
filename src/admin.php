@@ -21,6 +21,7 @@
 				<input type='submit' name='submit'/> 
 			<form/>
 			";
+
 		} else {
 			$password = $_POST['password'];
 			
@@ -29,17 +30,50 @@
 				echo "Falsches Passwort";
 			} else {
 
-				//print all entries
-
+				//this array stores all entries as objects 
+				$allEntries = array();
+				
 				//database connection
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
+				$dbSelectAll = "SELECT * FROM guestbook;";
 
-				$test = new Entry();
-				$test->setFirstName("hahaah");
+				//get data
+				$entries = mysqli_query($dbConnection, $dbSelectAll);
 
-				echo $test->getFirstName();
 
-				echo "Richtiges Passwort";
+				//table head
+
+				echo "<table border>
+						<tr>
+							<td><b>Name<b></td>
+							<td><b>Nachname<b></td>
+							<td><b>Email<b></td>
+							<td><b>Eintrag<b></td>
+							<td><b>Datum<b></td>
+						</tr>
+				";
+
+				while ($data = mysqli_fetch_assoc($entries)) {	
+
+					//init object 
+					$temp = new Entry();
+
+					$temp->setFirstName($data['firstName']);
+					$temp->setLastName($data['lastName']);
+					$temp->setUserEmail($data['userEmail']);
+					$temp->setUserEntry($data['userEntry']);
+					$temp->setEntryDate($data['entryDate']);
+
+					//print row
+					$temp->printRow();
+
+					echo $temp->generateQuery();
+					//put $temp into array
+					array_push($allEntries, $temp);
+				}
+
+				//close table
+				echo "</table>";
 			}
 		}
 
