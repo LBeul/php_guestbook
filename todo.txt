@@ -1,0 +1,9 @@
+louis: 
+
+   - log in page
+   - stylen	
+
+bartosz:
+   - adjust entryClass to two databases 
+   - admin page (query for getting all entries and users)
+   - entry (user) handling -> delete
