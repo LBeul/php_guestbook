@@ -5,5 +5,5 @@ CREATE TABLE guestbookUser (
 	lastName VARCHAR(256),
 	userEmail VARCHAR(256),
 	password  VARCHAR(256),
-	userEntryKey VARCHAR(265)
+	userEntryKey VARCHAR(256)
 )
