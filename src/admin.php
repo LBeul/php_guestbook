@@ -42,7 +42,6 @@
 
 
 				//table head
-
 				echo "<table border>
 						<tr>
 							<td><b>Name<b></td>
@@ -50,6 +49,7 @@
 							<td><b>Email<b></td>
 							<td><b>Eintrag<b></td>
 							<td><b>Datum<b></td>
+							<td><b>Action<b></td>
 						</tr>
 				";
 
@@ -67,7 +67,6 @@
 					//print row
 					$temp->printRow();
 
-					echo $temp->generateQuery();
 					//put $temp into array
 					array_push($allEntries, $temp);
 				}

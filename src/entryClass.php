@@ -70,6 +70,10 @@
 					entryDate = '$this->entryDate'";
 		}
 
+		function deleteSQL() {
+			return "DELETE FROM guestbook " . $this->generateQuery();
+		}
+
 
 	}
 
