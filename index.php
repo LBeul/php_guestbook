@@ -22,7 +22,7 @@
 					<form method='POST'>
 						<input type='text' name='firstName' placeholder='Vorname'/>
 						<input type='text' name='lastName' placeholder='Nachname'/>
-						<input type='email' name='userMail' placeholder='Mailadresse'/>
+						<input type='email' name='userEmail' placeholder='Mailadresse'/>
 						<input 
 							id='textarea'
 							type='textarea' 
@@ -53,7 +53,7 @@
 			//gather user input 
 			$firstName =   $_POST['firstName'];
 			$lastName =    $_POST['lastName'];
-			$userMail =    $_POST['userMail'];
+			$userEmail =    $_POST['userEmail'];
 			$userEntry =   $_POST['gb_entry'];
 			$currentTime = date('Y-m-d G:i:s');
 
@@ -68,7 +68,7 @@
 									VALUES (
 									'$firstName', 
 									'$lastName', 
-									'$userMail', 
+									'$userEmail', 
 									'$userEntry',
 									'$currentTime'
 									);";
@@ -88,6 +88,7 @@
 
 
 			//table header
+			//TODO make it pretty
 			echo "<table border>";
 				echo "<tr>";
 
