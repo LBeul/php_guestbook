@@ -58,6 +58,7 @@
 					<td>$this->userEmail</td>
 					<td>$this->userEntry</td>
 					<td>$this->entryDate</td>
+					<td></td>
 				</tr>";
 		}
 
