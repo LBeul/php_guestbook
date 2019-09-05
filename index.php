@@ -37,67 +37,66 @@
 		else
 		{
 
-			//helper functions
-
-			//turns given string into table cell (<td>)
+			// Helper functions
+			
+			// Turns given string into table cell (<td>)
 			function toTd($str) {
 				return "<td>$str</td>";
 			}
 
-			//bolds given string (<b>)
+			// Bolds given string (<b>)
 			function bold($str) {
 				return "<b>$str</b>";
 			}
 
 
-			//gather user input 
+			// Gather user input 
 			$firstName =   $_POST['firstName'];
 			$lastName =    $_POST['lastName'];
 			$userEmail =    $_POST['userEmail'];
 			$userEntry =   $_POST['gb_entry'];
 			$currentTime = date('Y-m-d G:i:s');
 
-			//connect to database
+			// Connect to database
 			$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-			//define queries
-			$dbSelectAll 		= 	"SELECT * 
-							 	  	FROM guestbook;";
+			// Define queries
+			$dbSelectAll ="SELECT * FROM guestbook";
 
-			$dbInsertUserInput 	= 	"INSERT INTO guestbook 
-									VALUES (
-									'$firstName', 
-									'$lastName', 
-									'$userEmail', 
-									'$userEntry',
-									'$currentTime'
-									);";
+			$dbInsertUserInput = "INSERT INTO guestbook VALUES (
+				'$firstName',
+				'$lastName', 
+				'$userEmail', 
+				'$userEntry',
+				'$currentTime'
+			);";
 
 
-			//insert user input into database
-			if (mysqli_query($dbConnection, $dbInsertUserInput)) {
+			// Insert user input into database
+			if(mysqli_query($dbConnection, $dbInsertUserInput)) 
+			{
 				echo "Ihr Eintrag wurde erfolgreich gespeichert";
-			} else {
+			} 
+			else 
+			{
 				echo "Ihr Eintrag wurde nicht erfolgreich gespeichert.";
 				echo mysqli_error($dbConnection);
 			}
 
 
-			//print all eintries
+			// Print all entries
 			$allEntries = mysqli_query($dbConnection, $dbSelectAll);
 
 
-			//table header
-			//TODO make it pretty :)
+			// Table header
+			// TODO make it pretty :)
 			echo "<table border>";
 				echo "<tr>";
-
 					echo toTd(bold("Name"));
 					echo toTd(bold("Nachname"));
 					echo toTd(bold("eMail"));
 					echo toTd(bold("Eintrag"));
 					echo toTd(bold("Wann"));
-			
 			echo "</tr>";
 
 			while($data = mysqli_fetch_assoc($allEntries)) {
@@ -106,7 +105,7 @@
 					echo toTd($data['firstName']);
 					echo toTd($data['lastName']);
 
-					//temporarily store eMail
+					// Temporarily store eMail
 					$eMail = $data['userEmail'];
 					echo toTd("<a href='mailto:$eMail'>Anschreiben</a>");
 					echo toTd($data['userEntry']);
@@ -120,7 +119,7 @@
 
 	?>
 
-	<!-- make a pretty button out of it-->
+	<!-- Make a pretty button out of it-->
 	<a href="/php_guestbook/src/admin.php">Admin</a>
 </body>
 </html>

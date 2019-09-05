@@ -1,5 +1,5 @@
-# here you go :*
-# muesste so funktioneren
+# Here you go :*
+# Muesste so funktioneren
 
 CREATE TABLE guestbook (
 	firstName VARCHAR(256),

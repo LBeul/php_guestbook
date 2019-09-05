@@ -8,7 +8,7 @@
 		private $entryDate;
 
 
-		//getter and setter
+		// Getter and setter
 		function getFirstName() {
 			return $this->firstName;
 		}
@@ -50,9 +50,10 @@
 		}
 
 
-		//print entry as table row 
+		// Print entry as table row 
 		function printRow() {
-			echo "<tr>
+			echo "
+				<tr>
 					<td>$this->firstName</td>
 					<td>$this->lastName</td>
 					<td>$this->userEmail</td>
@@ -61,7 +62,7 @@
 				</tr>";
 		}
 
-		//generates WHERE - part of a sql query
+		// Generates WHERE - part of a sql query
 		function generateQuery() {
 			return "WHERE firstName = '$this->firstName'
 					lastName = '$this->lastName'

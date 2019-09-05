@@ -1,4 +1,4 @@
-<!--this page manages contents of the guestbook table-->
+<!-- This page manages contents of the guestbook table-->
 
 <!DOCTYPE html>
 <html>
@@ -10,39 +10,44 @@
 	<?php
 		include 'entryClass.php';
 
-		if (!isset($_POST["submit"])) {
+		if(!isset($_POST["submit"])) 
+		{
 
-		echo "
-			<h1>Willkommen in der Admin Seite des Gästebuches</h1>
-			<p>Bitte geben Sie das Adminpasswort ein<p>
+			echo "
+				<h1>Willkommen in der Admin Seite des Gästebuches</h1>
+				<p>Bitte geben Sie das Adminpasswort ein<p>
 
-			<form method='POST'>
-				<input type='password' name='password'/>
-				<input type='submit' name='submit'/> 
-			<form/>
-			";
+				<form method='POST'>
+					<input type='password' name='password'/>
+					<input type='submit' name='submit'/> 
+				<form/>";
 
-		} else {
+		} 
+		else 
+		{
 			$password = $_POST['password'];
 			
-			//if wrong password
-			if ($password != "root") {
+			// If password is wrong
+			if($password != "root") 
+			{
 				echo "Falsches Passwort";
-			} else {
-
-				//this array stores all entries as objects 
+			}
+			else 
+			{
+				// This array stores all entries as objects 
 				$allEntries = array();
 				
-				//database connection
+				// Database connection
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 				$dbSelectAll = "SELECT * FROM guestbook;";
 
-				//get data
+				// Retrieve data
 				$entries = mysqli_query($dbConnection, $dbSelectAll);
 
 
-				//table head
-				echo "<table border>
+				// Table head
+				echo "
+					<table border>
 						<tr>
 							<td><b>Name<b></td>
 							<td><b>Nachname<b></td>
@@ -53,9 +58,10 @@
 						</tr>
 				";
 
-				while ($data = mysqli_fetch_assoc($entries)) {	
+				while($data = mysqli_fetch_assoc($entries)) 
+				{	
 
-					//init object 
+					// Initialize entry object 
 					$temp = new Entry();
 
 					$temp->setFirstName($data['firstName']);
@@ -64,14 +70,14 @@
 					$temp->setUserEntry($data['userEntry']);
 					$temp->setEntryDate($data['entryDate']);
 
-					//print row
+					// Print row
 					$temp->printRow();
 
-					//put $temp into array
+					// Put $temp into array
 					array_push($allEntries, $temp);
 				}
 
-				//close table
+				// Close table
 				echo "</table>";
 			}
 		}
