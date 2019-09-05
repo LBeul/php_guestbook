@@ -88,7 +88,7 @@
 
 
 			//table header
-			//TODO make it pretty
+			//TODO make it pretty :)
 			echo "<table border>";
 				echo "<tr>";
 
@@ -100,13 +100,15 @@
 			
 			echo "</tr>";
 
-			//database data
 			while($data = mysqli_fetch_assoc($allEntries)) {
 				echo "<tr>";
 
 					echo toTd($data['firstName']);
 					echo toTd($data['lastName']);
-					echo toTd($data['userEmail']);
+
+					//temporarily store eMail
+					$eMail = $data['userEmail'];
+					echo toTd("<a href='mailto:$eMail'>Anschreiben</a>");
 					echo toTd($data['userEntry']);
 					echo toTd($data['entryDate']);
 
