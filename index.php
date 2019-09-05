@@ -36,23 +36,83 @@
 		}
 		else
 		{
+
+			//helper functions
+
+			//turns given string into table cell (<td>)
+			function toTd($str) {
+				return "<td>$str</td>";
+			}
+
+			//bolds given string (<b>)
+			function bold($str) {
+				return "<b>$str</b>";
+			}
+
+
 			//gather user input 
-			$firstName = $_POST['firstName'];
-			$lastName = $_POST['lastName'];
-			$userMail = $_POST['userMail'];
+			$firstName =   $_POST['firstName'];
+			$lastName =    $_POST['lastName'];
+			$userMail =    $_POST['userMail'];
+			$userEntry =   $_POST['gb_entry'];
+			$currentTime = date('Y-m-d G:i:s');
 
 			//connect to database
-			$dbConnection = mysqli_connect("localhost", "root", "", "bbs.guestbook");
+			$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-			//define quaries
-			$dbSelectAll 		= "SELECT * 
-							 	   FROM bbs.guestbook;";
+			//define queries
+			$dbSelectAll 		= 	"SELECT * 
+							 	  	FROM guestbook;";
 
-			$dbInsertUserInput 	= "INSERT INTO bss.guestbook
-								   ('$firstName', '$lastName', '$userMail', 'date('Y-m-d')');";
+			$dbInsertUserInput 	= 	"INSERT INTO guestbook 
+									VALUES (
+									'$firstName', 
+									'$lastName', 
+									'$userMail', 
+									'$userEntry',
+									'$currentTime'
+									);";
 
+
+			//insert user input into database
+			if (mysqli_query($dbConnection, $dbInsertUserInput)) {
+				echo "Ihr Eintrag wurde erfolgreich gespeichert";
+			} else {
+				echo "Ihr Eintrag wurde nicht erfolgreich gespeichert.";
+				echo mysqli_error($dbConnection);
+			}
+
+
+			//print all eintries
+			$allEntries = mysqli_query($dbConnection, $dbSelectAll);
+
+
+			//table header
+			echo "<table border>";
+				echo "<tr>";
+
+					echo toTd(bold("Name"));
+					echo toTd(bold("Nachname"));
+					echo toTd(bold("eMail"));
+					echo toTd(bold("Eintrag"));
+					echo toTd(bold("Wann"));
 			
-			echo "works";
+			echo "</tr>";
+
+			//database data
+			while($data = mysqli_fetch_assoc($allEntries)) {
+				echo "<tr>";
+
+					echo toTd($data['firstName']);
+					echo toTd($data['lastName']);
+					echo toTd($data['userEmail']);
+					echo toTd($data['userEntry']);
+					echo toTd($data['entryDate']);
+
+				echo "</tr>";
+			}
+
+			echo "</table>";
 		}
 
 	?>
