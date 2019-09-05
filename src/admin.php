@@ -8,6 +8,8 @@
 </head>
 <body>
 	<?php
+		include 'entryClass.php';
+
 		if (!isset($_POST["submit"])) {
 
 		echo "
@@ -26,6 +28,17 @@
 			if ($password != "root") {
 				echo "Falsches Passwort";
 			} else {
+
+				//print all entries
+
+				//database connection
+				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
+
+				$test = new Entry();
+				$test->setFirstName("hahaah");
+
+				echo $test->getFirstName();
+
 				echo "Richtiges Passwort";
 			}
 		}
