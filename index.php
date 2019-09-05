@@ -120,6 +120,6 @@
 	?>
 
 	<!-- Make a pretty button out of it-->
-	<a href="./admin.php">Admin-Login</a>
+	<a href="./src/admin.php">Admin-Login</a>
 </body>
 </html>
