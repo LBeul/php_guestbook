@@ -117,5 +117,8 @@
 		}
 
 	?>
+
+	<!-- make a pretty button out of it-->
+	<a href="/php_guestbook/src/admin.php">Admin</a>
 </body>
 </html>
