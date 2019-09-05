@@ -53,11 +53,11 @@
 		//print entry as table row 
 		function printRow() {
 			echo "<tr>
-					<td>$this->firstName</td>;
-					<td>$this->lastName</td>;
-					<td>$this->userEmail</td>;
-					<td>$this->userEntry</td>;
-					<td>$this->entryDate</td>;
+					<td>$this->firstName</td>
+					<td>$this->lastName</td>
+					<td>$this->userEmail</td>
+					<td>$this->userEntry</td>
+					<td>$this->entryDate</td>
 				</tr>";
 		}
 
