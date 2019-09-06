@@ -53,7 +53,7 @@
 			// Gather user input 
 			$firstName =   $_POST['firstName'];
 			$lastName =    $_POST['lastName'];
-			$userEmail =    $_POST['userEmail'];
+			$userEmail =   $_POST['userEmail'];
 			$userEntry =   $_POST['gb_entry'];
 			$currentTime = date('Y-m-d G:i:s');
 

@@ -20,7 +20,7 @@
 			<form method='POST'>
 					<input type='password' name='password'/>
 					<input type='submit' name='submit'/> 
-				<form/>";
+			<form/>";
 
 		} 
 		else 
@@ -41,53 +41,65 @@
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
 				// Querry
-				$dbSelectAllEntries = "SELECT 
+				$dbSelectAllUsers = "SELECT 
 										guestbookuser.firstName AS firstName,
 										guestbookUser.lastName AS lastName,
 										guestbookUser.userEmail AS userEmail,
-										guestbookEntry.entry AS userEntry, 
-										guestbookUser.userEntryKey AS entryKey
-				 						FROM guestbookUser, guestbookEntry
-										WHERE guestbookUser.userEntryKey = guestbookEntry.userEntryKey 
-										ORDER BY entryKey ASC;";
+										guestbookUser.userEntryKey AS entryKey,
+										guestbookUser.password AS userPassword
+										FROM guestbookUser ;";
 				
-				$entries = mysqli_query($dbConnection, $dbSelectAllEntries);
+				$users = mysqli_query($dbConnection, $dbSelectAllUsers);
 				echo mysqli_error($dbConnection);
 
-				// Table head
-				echo "
-					<table border>
-						<tr>
-							<td><b>Name<b></td>
-							<td><b>Nachname<b></td>
-							<td><b>Email<b></td>
-							<td><b>Eintrag<b></td>
-							<td><b>Schlüssel<b></td>
-							<td><b>Action<b></td>
-						</tr>
-				";
+				while($data = mysqli_fetch_assoc($users)) {	
 
-				while($data = mysqli_fetch_assoc($entries)) 
-				{	
+					// Temporarily store data 
+					$fullName = $data['firstName']." ".$data['lastName'];
+					$userEmail = $data['userEmail'];
+					$userKey = $data['entryKey'];
+					$userPassword = $data['userPassword'];
 
-					// Initialize entry object 
-					$temp = new Entry();
+					// Print user info
+					echo "<h1>$fullName</h1>";
+					echo "<ul>
+							<li><b>E-mail</b>: $userEmail</li>
+							<li><b>Key</b>: $userKey</li>
+							<li><b>Schlüssel</b>: $userPassword</li>
+						</ul>";
 
-					$temp->setFirstName($data['firstName']);
-					$temp->setLastName($data['lastName']);
-					$temp->setUserEmail($data['userEmail']);
-					$temp->setUserEntry($data['userEntry']);
-					$temp->setKey($data['entryKey']);
+					// Print all user's entries
 
-					// Print row
-					$temp->printRow();
+					$dbSelectAllEntries = "SELECT * FROM guestbookEntry
+											WHERE userEntryKey = '$userKey' ;";
 
-					// Put $temp into array
-					array_push($allEntries, $temp);
+
+
+					// Get all entries
+					$entries = mysqli_query($dbConnection, $dbSelectAllEntries);
+					echo mysqli_error($dbConnection);
+
+					// Open table
+					echo "<div>
+						<table border>";
+
+					while ($entry = mysqli_fetch_assoc($entries)) {
+						// Temporarily store all variables
+						$entryText = $entry['entry'];
+						$entryDate = $entry['entryDate'];
+
+						// TODO make it pretty :)
+						// Maybe grid or smth
+						echo "<tr>
+								<td>$entryText</td>
+								<td>$entryDate</td>
+							</tr>";
+					}
+					// Close table
+					echo "
+							</table>
+						</div>";
 				}
-
-				// Close table
-				echo "</table>";
 			}
 		}
 
