@@ -35,9 +35,10 @@
 				
 				//database connection
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
-				$dbSelectAll = "SELECT * FROM guestbook;";
 
-				//get data
+				//get user data 
+				$dbSelectUserData = "SELECT * FROM guestbook;";
+				
 				$entries = mysqli_query($dbConnection, $dbSelectAll);
 
 
