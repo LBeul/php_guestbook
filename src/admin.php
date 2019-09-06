@@ -36,11 +36,19 @@
 				//database connection
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-				//get user data 
-				$dbSelectUserData = "SELECT * FROM guestbook;";
-				
-				$entries = mysqli_query($dbConnection, $dbSelectAll);
+				//querry
+				$dbSelectAllEntries = "SELECT 
+										guestbookuser.firstName AS firstName,
+										guestbookUser.lastName AS lastName,
+										guestbookUser.userEmail AS userEmail,
+										guestbookEntry.entry AS userEntry, 
+										guestbookUser.userEntryKey AS entryKey
 
+				 						FROM guestbookUser, guestbookEntry
+										WHERE guestbookUser.userEntryKey = guestbookEntry.userEntryKey";
+				
+				$entries = mysqli_query($dbConnection, $dbSelectAllEntries);
+				echo mysqli_error($dbConnection);
 
 				//table head
 				echo "<table border>
@@ -49,7 +57,7 @@
 							<td><b>Nachname<b></td>
 							<td><b>Email<b></td>
 							<td><b>Eintrag<b></td>
-							<td><b>Datum<b></td>
+							<td><b>Schlüssel<b></td>
 							<td><b>Action<b></td>
 						</tr>
 				";
@@ -63,12 +71,11 @@
 					$temp->setLastName($data['lastName']);
 					$temp->setUserEmail($data['userEmail']);
 					$temp->setUserEntry($data['userEntry']);
-					$temp->setEntryDate($data['entryDate']);
+					$temp->setKey($data['entryKey']);
 
 					//print row
 					$temp->printRow();
 
-					echo $temp->generateKey();
 					//put $temp into array
 					array_push($allEntries, $temp);
 				}
