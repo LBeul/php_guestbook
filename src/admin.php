@@ -26,32 +26,21 @@
 		// Button function to keep clear code 
 		function deleteButton($id) {
 
-			// Custom button name 
-			$name = "submitDelete".$id;
+			echo "test".$id;
 
-			echo 	"<td>
-						<form method='POST'>
-							<input type='submit' name=$name value=Löschen />
-						</form>
-					</td>
-				";
+			// Connect to database
+			$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-				if (isset($_POST[$name])) {
-					echo "klappt $submitDelete.$id";
+			// Delete query 
+			$dbDeleteEntry = "DELETE FROM guestbookEntry 
+								WHERE guestbookEntry.ID = $id ;";
 
-					$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
-
-					// Delete query 
-					$dbDeleteEntry = "DELETE FROM guestbookEntry 
-										WHERE guestbookEntry.ID = $id ;";
-
-					// Execute 
-					if (mysqli_query($dbConnection, $dbDeleteEntry)) {
-						echo "Eintrag wurde erfolgreich gelöscht.";
-					} else {
-						echo mysql_error($dbConnection);
-					}
-				}
+			// Execute 
+			if (mysqli_query($dbConnection, $dbDeleteEntry)) {
+				echo "Eintrag wurde erfolgreich gelöscht.";
+			} else {
+				echo mysql_error($dbConnection);
+			}
 		}
 
 		if(!isset($_POST["submit"])) 
@@ -148,8 +137,17 @@
 							echo toTd($entryDate);
 							echo toTd($entryID);
 
-							// Custom delete button 
-							deleteButton($entryID);
+							echo "<td>
+									<form action='admin.php' method='post'>
+										<input type='submit' name=$entryID value='Löschen' />
+									</form>
+								</td>";
+
+								// If button clicked 
+								if (isset($_POST[$entryID])) {
+									deleteButton($entryID);
+								}
+
 						echo "</tr>";
 					}
 					// Close table

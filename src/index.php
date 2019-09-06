@@ -121,7 +121,7 @@
 
 	<!-- Make a pretty button out of it-->
 	<div class='container'>
-			<a href="./admin.php">Admin-Login</a>
+			<a href="./adminLogin.php">Admin-Login</a>
 	</div>
 </body>
 </html>
