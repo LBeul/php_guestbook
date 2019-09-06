@@ -8,7 +8,20 @@
 </head>
 <body>
 	<?php
+
 		include 'entryClass.php';
+
+		// Helper functions
+
+		// Turns given string into table cell (<td>)
+		function toTd($str) {
+			return "<td>$str</td>";
+		}
+
+		// Bolds given string (<b>)
+		function bold($str) {
+			return "<b>$str</b>";
+		}
 
 		// Button function to keep clear code 
 		function deleteButton($id) {
@@ -18,7 +31,6 @@
 
 			echo 	"<td>
 						<form method='POST'>
-							<!-- custom button name -->
 							<input type='submit' name=$name value=Löschen />
 						</form>
 					</td>
@@ -95,9 +107,9 @@
 					// Print user info
 					echo "<h1>$fullName</h1>";
 					echo "<ul>
-							<li><b>E-mail</b>: <a href=mailto:$userEmail>$userEmail</a></li>
-							<li><b>Key</b>: $userKey</li>
-							<li><b>Schlüssel</b>: $userPassword</li>
+							<li>".bold("E-Mail").": <a href=mailto:$userEmail>$userEmail</a></li>
+							<li>".bold("Key").": $userKey</li>
+							<li>".bold("Schlüssel").": $userPassword</li>
 						</ul>";
 
 					// Print all user's entries
@@ -115,6 +127,14 @@
 					echo "<div>
 						<table border>";
 
+					// Table head 
+					echo "<tr>";
+						echo toTd(bold("Eintrag"));
+						echo toTd(bold("Datum"));
+						echo toTd(bold("ID"));
+						echo toTd(bold("Action"));
+					echo "</tr>";
+
 					while ($entry = mysqli_fetch_assoc($entries)) {
 						// Temporarily store all variables
 						$entryText = $entry['entry'];
@@ -123,14 +143,14 @@
 
 						// TODO make it pretty :)
 						// Maybe grid or smth
-						echo "<tr>
-								<td>$entryText</td>
-								<td>$entryDate</td>
-								<td><b>$entryID</b></td>";
+						echo "<tr>";
+							echo toTd($entryText);
+							echo toTd($entryDate);
+							echo toTd($entryID);
 
-								// Custom delete button 
-								deleteButton($entryID);
-							echo "</tr>";
+							// Custom delete button 
+							deleteButton($entryID);
+						echo "</tr>";
 					}
 					// Close table
 					echo "
