@@ -22,9 +22,7 @@
 		}
 
 		// Button function to keep clear code 
-		function deleteButton($id) {
-
-			echo "test".$id;
+		function deleteEntry($id) {
 
 			// Connect to database
 			$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
@@ -36,6 +34,9 @@
 			// Execute 
 			if (mysqli_query($dbConnection, $dbDeleteEntry)) {
 				echo "Eintrag wurde erfolgreich gelöscht.";
+
+				//go back
+				header("Location: admin.php");
 			} else {
 				echo mysql_error($dbConnection);
 			}
@@ -146,8 +147,9 @@
 
 			// Check if checked
 			if (isset($_POST[$entry['ID']]) && $_POST[$entry['ID']] == $entry['ID']) {
-				echo $entry['ID'];
-				echo "WORKS!!!";
+
+				// If so -> delete entry
+				deleteEntry($entry['ID']);
 			}
 		}
 
