@@ -6,7 +6,7 @@
 		public $userEmail;
 		public $userEntry;
 		private $entryDate;
-
+		private $key;
 
 		// Getter and setter
 		function getFirstName() {
@@ -41,12 +41,12 @@
 			$this->userEntry = $userEntry;
 		}
 
-		function getEntryDate() {
-			return $this->entryDate;
+		function getKey() {
+			return $this->key;
 		}
 
-		function setEntryDate($entryDate) {
-			$this->entryDate = $entryDate;
+		function setKey($key) {
+			$this->key = $key;
 		}
 
 
@@ -58,10 +58,12 @@
 					<td>$this->lastName</td>
 					<td>$this->userEmail</td>
 					<td>$this->userEntry</td>
-					<td>$this->entryDate</td>
+					<td>$this->key</td>
+					<td>LÖSCHEN</td>
 				</tr>";
 		}
 
+<<<<<<< HEAD
 		// Generates WHERE - part of a sql query
 		function generateQuery() {
 			return "WHERE firstName = '$this->firstName'
@@ -69,13 +71,15 @@
 					userEmail = '$this->userEmail'
 					userEntry = '$this->userEntry'
 					entryDate = '$this->entryDate'";
+=======
+		//generates WHERE - part of a sql query
+		static function generateQuery() {
+			return " WHERE guestbookUser.userEntryKey = guestbookEntry.userEntryKey ";
+>>>>>>> twoDatabases
 		}
 
 		function deleteSQL() {
 			return "DELETE FROM guestbook " . $this->generateQuery();
 		}
-
-
 	}
-
 ?>

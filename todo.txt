@@ -1,0 +1,15 @@
+louis: 
+
+   - log in page
+     - registration
+     - creating entry and inserting into database 
+
+   - stylen	
+
+bartosz:
+   - adjust entryClass to two databases 
+      - check
+   - admin page (query for getting all entries and users)
+     - check: make it pretty
+
+   - entry (user) handling -> delete
