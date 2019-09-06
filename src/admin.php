@@ -48,7 +48,8 @@
 										guestbookEntry.entry AS userEntry, 
 										guestbookUser.userEntryKey AS entryKey
 				 						FROM guestbookUser, guestbookEntry
-										WHERE guestbookUser.userEntryKey = guestbookEntry.userEntryKey";
+										WHERE guestbookUser.userEntryKey = guestbookEntry.userEntryKey 
+										ORDER BY entryKey ASC;";
 				
 				$entries = mysqli_query($dbConnection, $dbSelectAllEntries);
 				echo mysqli_error($dbConnection);
