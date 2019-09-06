@@ -67,7 +67,7 @@ INSERT INTO guestbookEntry VALUES (
 ;
 
 INSERT INTO guestbookEntry VALUES (
-	"Ich nutze das Physikunterricht produktiv aus",
+	"Ich nutze den Physikunterricht produktiv aus",
 	"123test",
 	"2019-09-06 11:30:31"
 )
