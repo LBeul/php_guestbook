@@ -40,9 +40,6 @@
 				// Database connection
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-
-				// Retrieve data
-				$entries = mysqli_query($dbConnection, $dbSelectAll);
 				//querry
 				$dbSelectAllEntries = "SELECT 
 										guestbookuser.firstName AS firstName,

@@ -63,7 +63,6 @@
 				</tr>";
 		}
 
-<<<<<<< HEAD
 		// Generates WHERE - part of a sql query
 		function generateQuery() {
 			return "WHERE firstName = '$this->firstName'
@@ -71,12 +70,7 @@
 					userEmail = '$this->userEmail'
 					userEntry = '$this->userEntry'
 					entryDate = '$this->entryDate'";
-=======
-		//generates WHERE - part of a sql query
-		static function generateQuery() {
-			return " WHERE guestbookUser.userEntryKey = guestbookEntry.userEntryKey ";
->>>>>>> twoDatabases
-		}
+				}
 
 		function deleteSQL() {
 			return "DELETE FROM guestbook " . $this->generateQuery();
