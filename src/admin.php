@@ -17,7 +17,7 @@
 				<h1>Willkommen in der Admin Seite des Gästebuches</h1>
 				<p>Bitte geben Sie das Adminpasswort ein<p>
 
-				<form method='POST'>
+			<form method='POST'>
 					<input type='password' name='password'/>
 					<input type='submit' name='submit'/> 
 				<form/>";
@@ -41,7 +41,7 @@
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
 				// Querry
-				$dbS	electAllEntries = "SELECT 
+				$dbSelectAllEntries = "SELECT 
 										guestbookuser.firstName AS firstName,
 										guestbookUser.lastName AS lastName,
 										guestbookUser.userEmail AS userEmail,

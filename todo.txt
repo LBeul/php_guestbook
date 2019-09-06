@@ -3,6 +3,9 @@ louis:
    - log in page
      - registration
      - creating entry and inserting into database 
+        - both guestbookUser and guestbookEntry
+        - generate some kind of key (string)
+
 
    - thema? guestbook for what? restaurant? shop?
    - stylen	
