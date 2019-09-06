@@ -4,6 +4,7 @@ louis:
      - registration
      - creating entry and inserting into database 
 
+   - thema? guestbook for what? restaurant? shop?
    - stylen	
 
 bartosz:
