@@ -10,6 +10,38 @@
 	<?php
 		include 'entryClass.php';
 
+		// Button function to keep clear code 
+		function deleteButton($id) {
+
+			// Custom button name 
+			$name = "submitDelete".$id;
+
+			echo 	"<td>
+						<form method='POST'>
+							<!-- custom button name -->
+							<input type='submit' name=$name value=Löschen />
+						</form>
+					</td>
+				";
+
+				if (isset($_POST[$name])) {
+					echo "klappt $submitDelete.$id";
+
+					$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
+
+					// Delete query 
+					$dbDeleteEntry = "DELETE FROM guestbookEntry 
+										WHERE guestbookEntry.ID = $id ;";
+
+					// Execute 
+					if (mysqli_query($dbConnection, $dbDeleteEntry)) {
+						echo "Eintrag wurde erfolgreich gelöscht.";
+					} else {
+						echo mysql_error($dbConnection);
+					}
+				}
+		}
+
 		if(!isset($_POST["submit"])) 
 		{
 
@@ -94,8 +126,11 @@
 						echo "<tr>
 								<td>$entryText</td>
 								<td>$entryDate</td>
-								<td><b>$entryID</b></td>
-							</tr>";
+								<td><b>$entryID</b></td>";
+
+								// Custom delete button 
+								deleteButton($entryID);
+							echo "</tr>";
 					}
 					// Close table
 					echo "
