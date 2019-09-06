@@ -1,5 +1,4 @@
 louis: 
-
    - log in page
      - registration
      - creating entry and inserting into database 

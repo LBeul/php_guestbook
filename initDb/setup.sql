@@ -1,5 +1,25 @@
-# test data 
+# Use this file to create tables so we use the same data 
 
+
+# Initialize user database
+CREATE TABLE guestbookUser (
+	firstName VARCHAR(256),
+	lastName VARCHAR(256),
+	userEmail VARCHAR(256),
+	password  VARCHAR(256),
+	userEntryKey VARCHAR(256)
+)
+;
+
+# Initalize entry database
+CREATE TABLE guestbookEntry (
+	entry LONGTEXT,
+	userEntryKey VARCHAR(256), 
+	entryDate TIMESTAMP
+)
+;
+
+# Testing data 
 INSERT INTO guestbookUser VALUES (
 	"Bartosz",
 	"Burgiel",
