@@ -87,12 +87,14 @@
 						// Temporarily store all variables
 						$entryText = $entry['entry'];
 						$entryDate = $entry['entryDate'];
+						$entryID = $entry['ID'];
 
 						// TODO make it pretty :)
 						// Maybe grid or smth
 						echo "<tr>
 								<td>$entryText</td>
 								<td>$entryDate</td>
+								<td><b>$entryID</b></td>
 							</tr>";
 					}
 					// Close table

@@ -4,7 +4,7 @@ louis:
      - creating entry and inserting into database 
         - both guestbookUser and guestbookEntry
         - generate some kind of key (string)
-
+        - unique ID for every entry (string)
 
    - thema? guestbook for what? restaurant? shop?
    - stylen	
