@@ -40,7 +40,7 @@
 				// Database connection
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-				//querry
+				// Querry
 				$dbSelectAllEntries = "SELECT 
 										guestbookuser.firstName AS firstName,
 										guestbookUser.lastName AS lastName,
