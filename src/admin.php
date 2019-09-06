@@ -9,8 +9,6 @@
 <body>
 	<?php
 
-		include 'entryClass.php';
-
 		// Helper functions
 
 		// Turns given string into table cell (<td>)
@@ -43,8 +41,11 @@
 			}
 		}
 
-		if(isset($_POST["submit"])) {
+		if (!isset($_POST['delete'])) {
 
+			// Open form
+			echo "<form method='post' action=''>";
+			
 			// Database connection
 			$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
@@ -77,7 +78,6 @@
 					</ul>";
 
 				// Print all user's entries
-
 				$dbSelectAllEntries = "SELECT * FROM guestbookEntry
 										WHERE userEntryKey = '$userKey' ;";
 
@@ -99,7 +99,9 @@
 					echo toTd(bold("Action"));
 				echo "</tr>";
 
+				// Print all entries
 				while ($entry = mysqli_fetch_assoc($entries)) {
+
 					// Temporarily store all variables
 					$entryText = $entry['entry'];
 					$entryDate = $entry['entryDate'];
@@ -113,25 +115,44 @@
 						echo toTd($entryID);
 
 						echo "<td>
-								<form action='admin.php' method='post'>
-									<input type='submit' name=$entryID value='Löschen' />
-								</form>
+								<input type='checkbox' name=$entryID value=$entryID />
 							</td>";
-
-							// If button clicked 
-							if (isset($_POST[$entryID])) {
-								deleteButton($entryID);
-							}
 
 					echo "</tr>";
 				}
+
 				// Close table
 				echo "
 						</table>
 					</div>";
 			}
-		}
+
+			// Delete button
+			echo "<input type='submit' name='delete' value='Löschen' />
+				</form>";
+	} else {
+		// Check which entries are to be deleted
+
+		// Database connection
+		$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
+
+		// SQL query
+		$dbGetAllEntries = "SELECT ID FROM guestbookEntry ;";
 	
+		$allEntriesKeys = mysqli_query($dbConnection, $dbGetAllEntries);
+		echo mysqli_error($dbConnection);
+
+		while($entry = mysqli_fetch_assoc($allEntriesKeys)) {
+
+			// Check if checked
+			if (isset($_POST[$entry['ID']]) && $_POST[$entry['ID']] == $entry['ID']) {
+				echo $entry['ID'];
+				echo "WORKS!!!";
+			}
+		}
+
+	}
+
 
 	?>
 </body>
