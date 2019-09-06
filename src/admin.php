@@ -63,7 +63,7 @@
 					// Print user info
 					echo "<h1>$fullName</h1>";
 					echo "<ul>
-							<li><b>E-mail</b>: $userEmail</li>
+							<li><b>E-mail</b>: <a href=mailto:$userEmail>$userEmail</a></li>
 							<li><b>Key</b>: $userKey</li>
 							<li><b>Schlüssel</b>: $userPassword</li>
 						</ul>";
