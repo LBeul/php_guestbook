@@ -70,8 +70,8 @@
 					userEmail = '$this->userEmail'
 					userEntry = '$this->userEntry'
 					entryDate = '$this->entryDate'";
-				}
-
+				
+}
 		function deleteSQL() {
 			return "DELETE FROM guestbook " . $this->generateQuery();
 		}
