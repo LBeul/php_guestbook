@@ -41,7 +41,7 @@
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
 				// Querry
-				$dbSelectAllEntries = "SELECT 
+				$dbS	electAllEntries = "SELECT 
 										guestbookuser.firstName AS firstName,
 										guestbookUser.lastName AS lastName,
 										guestbookUser.userEmail AS userEmail,
