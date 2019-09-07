@@ -97,7 +97,7 @@
 					echo toTd(bold("Eintrag"));
 					echo toTd(bold("Datum"));
 					echo toTd(bold("ID"));
-					echo toTd(bold("Action"));
+					echo toTd(bold("Löschen"));
 				echo "</tr>";
 
 				// Print all entries
