@@ -5,6 +5,7 @@
 CREATE TABLE guestbookUser (
 	firstName VARCHAR(256),
 	lastName VARCHAR(256),
+	userName VARCHAR(256),
 	userEmail VARCHAR(256),
 	password  VARCHAR(256),
 	userEntryKey VARCHAR(256)
@@ -24,6 +25,7 @@ CREATE TABLE guestbookEntry (
 INSERT INTO guestbookUser VALUES (
 	"Bartosz",
 	"Burgiel",
+	"crazyOsch",
 	"bartek.burgiel@hotmail.com",
 	"root",
 	"123test"
@@ -33,6 +35,7 @@ INSERT INTO guestbookUser VALUES (
 INSERT INTO guestbookUser VALUES (
 	"Louis",
 	"Beul",
+	"KingLoui",
 	"l.beul@outlook.de",
 	"root",
 	"321tset"
