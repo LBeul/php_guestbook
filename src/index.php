@@ -117,6 +117,8 @@
 			echo "</table>";
 		}
 
+			mysql_close($dbConnection);
+
 	?>
 
 	<!-- Make a pretty button out of it-->

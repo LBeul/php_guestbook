@@ -155,6 +155,7 @@
 
 	}
 
+	mysql_close($dbConnection);
 
 	?>
 </body>
