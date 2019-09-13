@@ -33,7 +33,7 @@ INSERT INTO guestbookUser VALUES (
 INSERT INTO guestbookUser VALUES (
 	"Louis",
 	"Beul",
-	"l.beul@hotmail.de",
+	"l.beul@outlook.de",
 	"root",
 	"321tset"
 )

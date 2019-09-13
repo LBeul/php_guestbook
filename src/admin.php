@@ -9,14 +9,14 @@
 <body>
 	<?php
 
-		// Helper functions
+		// HELPER FUNCTIONS
 
 		// Turns given string into table cell (<td>)
 		function toTd($str) {
 			return "<td>$str</td>";
 		}
 
-		// Bolds given string (<b>)
+		// Adds boldness to given string (<b>)
 		function bold($str) {
 			return "<b>$str</b>";
 		}
@@ -35,7 +35,7 @@
 			if (mysqli_query($dbConnection, $dbDeleteEntry)) {
 				echo "Eintrag wurde erfolgreich gelöscht.";
 
-				//go back
+				// Go back
 				header("Location: admin.php");
 			} else {
 				echo mysql_error($dbConnection);
@@ -50,7 +50,7 @@
 			// Database connection
 			$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-			// Querry
+			// Query
 			$dbSelectAllUsers = "SELECT 
 									guestbookuser.firstName AS firstName,
 									guestbookUser.lastName AS lastName,
@@ -108,8 +108,8 @@
 					$entryDate = $entry['entryDate'];
 					$entryID = $entry['ID'];
 
-					// TODO make it pretty :)
-					// Maybe grid or smth
+					// TODO: make it pretty :)
+					// Maybe grid or sth
 					echo "<tr>";
 						echo toTd($entryText);
 						echo toTd($entryDate);
@@ -145,7 +145,7 @@
 
 		while($entry = mysqli_fetch_assoc($allEntriesKeys)) {
 
-			// Check if checked
+			// Validate if checked
 			if (isset($_POST[$entry['ID']]) && $_POST[$entry['ID']] == $entry['ID']) {
 
 				// If so -> delete entry

@@ -10,6 +10,7 @@
 
 		if(!isset($_POST['submit']))
 		{
+			//TODO: Swap out Lorem Ipsum for sth useful :D
 			echo "
 				<div class='container' id='form-wrapper'>
 					<header>Willkommen im Gästebuch</header>
@@ -20,7 +21,7 @@
 						sanctus est Lorem ipsum dolor sit amet.
 					</div>
 					<form method='POST'>
-						<input type='text' name='firstName' placeholder='Vorname'/>
+						<input type='text' name='userName' placeholder='Vorname'/>
 						<input type='text' name='lastName' placeholder='Nachname'/>
 						<input type='email' name='userEmail' placeholder='Mailadresse'/>
 						<input 
@@ -44,7 +45,7 @@
 				return "<td>$str</td>";
 			}
 
-			// Bolds given string (<b>)
+			// Adds boldness to given string (<b>)
 			function bold($str) {
 				return "<b>$str</b>";
 			}
@@ -89,7 +90,7 @@
 
 
 			// Table header
-			// TODO make it pretty :)
+			// TODO: make it pretty :)
 			echo "<table border>";
 				echo "<tr>";
 					echo toTd(bold("Name"));
@@ -121,7 +122,7 @@
 
 	?>
 
-	<!-- Make a pretty button out of it-->
+	<!-- TODO: Make a pretty button out of it-->
 	<div class='container'>
 			<a href="./adminLogin.php">Admin-Login</a>
 	</div>
