@@ -5,9 +5,7 @@
 CREATE TABLE guestbookUser (
 	firstName VARCHAR(256),
 	lastName VARCHAR(256),
-	userName VARCHAR(256),
 	userEmail VARCHAR(256),
-	password  VARCHAR(256),
 	userEntryKey VARCHAR(256)
 )
 ;
@@ -25,66 +23,70 @@ CREATE TABLE guestbookEntry (
 INSERT INTO guestbookUser VALUES (
 	"Bartosz",
 	"Burgiel",
-	"crazyOsch",
 	"bartek.burgiel@hotmail.com",
-	"root",
-	"123test"
+	"datPolishBoiii"
 )
 ;
 
 INSERT INTO guestbookUser VALUES (
 	"Louis",
 	"Beul",
-	"KingLoui",
 	"l.beul@outlook.de",
-	"root",
-	"321tset"
+	"iLikeTurtles"
+)
+;
+
+INSERT INTO guestbookUser VALUES (
+	"Mickey",
+	"Mouse",
+	"mickey@mouse.com",
+	"donaldsaBitch"
 )
 ;
 
 INSERT INTO guestbookEntry VALUES (
-	"Bestes Gästebuch der Welt!",
-	"123test",
+	"Heißt Sand eigentlich Sand, weil er zwischen See und Land liegt?",
+	"datPolishBoiii",
 	"2019-09-06 09:42:32",
 	"1"
 ) 
 ;
 
 INSERT INTO guestbookEntry VALUES (
-	"Das Gästebuch ist echt der hammer!",
-	"321tset",
+	"Wenn du einmal zu klatschen anfängst, hörst du nie auf. Es ändert sich bloß der Intervall.",
+	"iLikeTurtles",
 	"2019-09-06 09:42:42",
 	"2"
 ) 
 ;
 
 INSERT INTO guestbookEntry VALUES (
-	"Das Gästebuch funktioniert wirklich einwandfrei!",
-	"321tset",
+	"Woher wussten die Menschen, die die Uhr erfunden, wie vile Uhr wir gerade hatten?",
+	"donaldsaBitch",
 	"2019-09-06 11:32:53",
 	"3"
 )
 ;
 
 INSERT INTO guestbookEntry VALUES (
-	"Kann nur empfehlen 10/10",
-	"123test",
+	"Ist das eine rhetorische Frage?",
+	"datPolishBoiii",
 	"2019-09-06 11:29:13",
 	"4"
 )
 ;
 
 INSERT INTO guestbookEntry VALUES (
-	"Ich nutze den Physikunterricht produktiv aus",
-	"123test",
+	"Bio ist für mich Abfall.",
+	"iLikeTurtles",
 	"2019-09-06 11:30:31",
 	"5"
 )
 ;
 
 INSERT INTO guestbookEntry VALUES (
-	"Daniel sitzt neben mir und Katharina trägt vor",
-	"123test",
+	"Wait, that's illegal.",
+	"donaldsaBitch",
 	"2019-09-06 11:34:42",
 	"6"
 )
