@@ -11,7 +11,7 @@
 		// Connect to database
 		$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-		if(!isset($_POST['submit']))
+		if(!isset($_POST['login']))
 		{
 			//TODO: Swap out Lorem Ipsum for sth useful :D
 			echo "
@@ -24,16 +24,9 @@
 						sanctus est Lorem ipsum dolor sit amet.
 					</div>
 					<form method='POST'>
-						<input type='text' name='firstName' placeholder='Vorname'/>
-						<input type='text' name='lastName' placeholder='Nachname'/>
 						<input type='email' name='userEmail' placeholder='Mailadresse'/>
-						<input 
-							id='textarea'
-							type='textarea' 
-							name='gbEntry' 
-							placeholder='Hinterlasse einen Gästebucheintrag'
-						/>
-						<input type='submit' name='submit'/>
+						<input type='password' name='userPassword' placeholder='Passwort'/>
+						<input type='submit' name='login'/>
 					</form>
 				</div>
 			";
@@ -55,20 +48,14 @@
 
 
 			// Gather user input 
-			$firstName =   $_POST['firstName'];
-			$lastName =    $_POST['lastName'];
 			$userEmail =   $_POST['userEmail'];
-			$userEntry =   $_POST['gbEntry'];
-			$currentTime = date('Y-m-d G:i:s');
-			$userEntryId = strval(round(microtime(true) * 1000));
-
+			$userPassword =   $_POST['userPassword'];
 
 			// Setup query
-			$dbGetUser = "SELECT userEntryKey
+			$dbGetUser = "SELECT userEntryKey, firstName, lastName
 							FROM guestbookUser
-							WHERE '$firstName' = firstName AND
-									'$lastName' = lastName AND
-									'$userEmail' = userEmail 
+							WHERE '$userEmail' = userEmail AND
+									'$userPassword' = passwort
 									LIMIT 1;" ;
 
 			// Execute query
@@ -79,33 +66,20 @@
 			if (mysqli_num_rows($resDbGetUser) == 0) {
 				echo " tja ";
 			} else {
+				
+				// Result as array 
+				$arr = mysqli_fetch_array($resDbGetUser);
 
-				// Get key as array
-				$tempUserEntryKey = mysqli_fetch_array($resDbGetUser);
+				// Store variables in session
+				session_start();
+				
+				$_SESSION['firstName'] = $arr['firstName'];
+				$_SESSION['lastName'] = $arr['lastName'];
+				$_SESSION['userEntryKey'] = $arr['userEntryKey'];
 
-				// Get the actual key
-				$userEntryKey = $tempUserEntryKey['userEntryKey'];
+				// Go to newEntry.php page
+				header("Location: newEntry.php");
 
-				$dbInsertUserInput = "INSERT INTO guestbookEntry
-										VALUES (
-											'$userEntry',
-											'$userEntryKey',
-											'$currentTime',
-											'$userEntryId'
-										) ;";
-
-
-				// Insert user input into database
-				if(mysqli_query($dbConnection, $dbInsertUserInput)) 
-				{
-					echo "Ihr Eintrag wurde erfolgreich gespeichert";
-				} 
-				else 
-				{
-					echo "Ihr Eintrag wurde nicht erfolgreich gespeichert.";
-					// FIXME: Remove in production build!
-					echo mysqli_error($dbConnection);
-				}
 			}
 
 		}
