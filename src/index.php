@@ -60,14 +60,16 @@
 			$userEmail =   $_POST['userEmail'];
 			$userEntry =   $_POST['gbEntry'];
 			$currentTime = date('Y-m-d G:i:s');
+			$userEntryId = strval(round(microtime(true) * 1000));
 
 
 			// Setup query
-			$dbGetUser = "SELECT *
+			$dbGetUser = "SELECT userEntryKey
 							FROM guestbookUser
 							WHERE '$firstName' = firstName AND
 									'$lastName' = lastName AND
-									'$userEmail' = userEmail ;" ;
+									'$userEmail' = userEmail 
+									LIMIT 1;" ;
 
 			// Execute query
 			$resDbGetUser = mysqli_query($dbConnection, $dbGetUser);
@@ -77,21 +79,35 @@
 			if (mysqli_num_rows($resDbGetUser) == 0) {
 				echo " tja ";
 			} else {
-				echo "hallo du ";
-			}
+
+				// Get key as array
+				$tempUserEntryKey = mysqli_fetch_array($resDbGetUser);
+
+				// Get the actual key
+				$userEntryKey = $tempUserEntryKey['userEntryKey'];
+
+				$dbInsertUserInput = "INSERT INTO guestbookEntry
+										VALUES (
+											'$userEntry',
+											'$userEntryKey',
+											'$currentTime',
+											'$userEntryId'
+										) ;";
 
 
-			// Insert user input into database
-			if(mysqli_query($dbConnection, $dbInsertUserInput)) 
-			{
-				echo "Ihr Eintrag wurde erfolgreich gespeichert";
-			} 
-			else 
-			{
-				echo "Ihr Eintrag wurde nicht erfolgreich gespeichert.";
-				// FIXME: Remove in production build!
-				echo mysqli_error($dbConnection);
+				// Insert user input into database
+				if(mysqli_query($dbConnection, $dbInsertUserInput)) 
+				{
+					echo "Ihr Eintrag wurde erfolgreich gespeichert";
+				} 
+				else 
+				{
+					echo "Ihr Eintrag wurde nicht erfolgreich gespeichert.";
+					// FIXME: Remove in production build!
+					echo mysqli_error($dbConnection);
+				}
 			}
+
 		}
 			mysqli_close($dbConnection);
 
