@@ -9,6 +9,10 @@
 <body>
 	<?php
 
+
+		// Database connection
+		$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
+
 		// HELPER FUNCTIONS
 
 		// Turns given string into table cell (<td>)
@@ -38,6 +42,7 @@
 				// Go back
 				header("Location: admin.php");
 			} else {
+				// FIXME: Remove in production build!
 				echo mysql_error($dbConnection);
 			}
 		}
@@ -56,7 +61,6 @@
 									guestbookUser.lastName AS lastName,
 									guestbookUser.userEmail AS userEmail,
 									guestbookUser.userEntryKey AS entryKey,
-									guestbookUser.password AS userPassword
 									FROM guestbookUser ;";
 			
 			$users = mysqli_query($dbConnection, $dbSelectAllUsers);
@@ -68,14 +72,12 @@
 				$fullName = $data['firstName']." ".$data['lastName'];
 				$userEmail = $data['userEmail'];
 				$userKey = $data['entryKey'];
-				$userPassword = $data['userPassword'];
 
 				// Print user info
 				echo "<h1>$fullName</h1>";
 				echo "<ul>
 						<li>".bold("E-Mail").": <a href=mailto:$userEmail>$userEmail</a></li>
 						<li>".bold("Key").": $userKey</li>
-						<li>".bold("Schlüssel").": $userPassword</li>
 					</ul>";
 
 				// Print all user's entries
@@ -134,9 +136,6 @@
 	} else {
 		// Check which entries are to be deleted
 
-		// Database connection
-		$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
-
 		// SQL query
 		$dbGetAllEntries = "SELECT ID FROM guestbookEntry ;";
 	
@@ -155,7 +154,7 @@
 
 	}
 
-	mysql_close($dbConnection);
+	mysqli_close($dbConnection);
 
 	?>
 </body>

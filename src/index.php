@@ -61,10 +61,7 @@
 			$userEntry =   $_POST['gbEntry'];
 			$currentTime = date('Y-m-d G:i:s');
 
-			// Define queries
-			$dbSelectAll ="SELECT * FROM guestbook";
-
-			$dbInsertUserInput = "INSERT INTO guestbook VALUES (
+			$dbInsertUserInput = "INSERT INTO guestbookEntry VALUES (
 				'$firstName',
 				'$lastName', 
 				'$userEmail', 
@@ -81,43 +78,10 @@
 			else 
 			{
 				echo "Ihr Eintrag wurde nicht erfolgreich gespeichert.";
+				// FIXME: Remove in production build!
 				echo mysqli_error($dbConnection);
 			}
-
-
-			// Print all entries
-			$allEntries = mysqli_query($dbConnection, $dbSelectAll);
-
-
-			// Table header
-			// TODO: make it pretty :)
-			echo "<table border>";
-				echo "<tr>";
-					echo toTd(bold("Name"));
-					echo toTd(bold("Nachname"));
-					echo toTd(bold("eMail"));
-					echo toTd(bold("Eintrag"));
-					echo toTd(bold("Wann"));
-			echo "</tr>";
-
-			while($data = mysqli_fetch_assoc($allEntries)) {
-				echo "<tr>";
-
-					echo toTd($data['firstName']);
-					echo toTd($data['lastName']);
-
-					// Temporarily store eMail
-					$eMail = $data['userEmail'];
-					echo toTd("<a href='mailto:$eMail'>Anschreiben</a>");
-					echo toTd($data['userEntry']);
-					echo toTd($data['entryDate']);
-
-				echo "</tr>";
-			}
-
-			echo "</table>";
 		}
-
 			mysqli_close($dbConnection);
 
 	?>

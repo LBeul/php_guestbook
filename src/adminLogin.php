@@ -22,7 +22,8 @@
 			
 			// If password is wrong
 			if($password != "root") {
-				echo "Falsches Passwort";
+				echo "<h1>Falsches Passwort</h1>";
+				echo"<a href='./adminLogin.php'>Zurück zum Admin Login</a>";
 			} else {
 				header("Location: admin.php");
 			}
