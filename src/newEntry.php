@@ -12,8 +12,8 @@
 
 		// if not logged in 
 		if (!isset($_SESSION['firstName']) || !isset($_SESSION['lastName']) || !isset($_SESSION['userEntryKey'])) {
-			echo "<h1>Bitte einloggen :)</h1>
-					<a href='localhost/php_guestbook/src/index.php> Hier </a>";
+			echo "<h1>Bitte einloggen :)</h1>";
+			echo "<a href='index.php'> Hier </a>";
 
 		} else {
 
