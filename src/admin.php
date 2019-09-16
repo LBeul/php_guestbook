@@ -52,7 +52,7 @@
 
 			// Query
 			$dbSelectAllUsers = "SELECT 
-									guestbookuser.firstName AS firstName,
+									guestbookUser.firstName AS firstName,
 									guestbookUser.lastName AS lastName,
 									guestbookUser.userEmail AS userEmail,
 									guestbookUser.userEntryKey AS entryKey,

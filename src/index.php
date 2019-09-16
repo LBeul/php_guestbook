@@ -8,6 +8,9 @@
 <body>
 	<?php
 
+		// Connect to database
+		$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
+
 		if(!isset($_POST['submit']))
 		{
 			//TODO: Swap out Lorem Ipsum for sth useful :D
@@ -21,13 +24,13 @@
 						sanctus est Lorem ipsum dolor sit amet.
 					</div>
 					<form method='POST'>
-						<input type='text' name='userName' placeholder='Vorname'/>
+						<input type='text' name='firstName' placeholder='Vorname'/>
 						<input type='text' name='lastName' placeholder='Nachname'/>
 						<input type='email' name='userEmail' placeholder='Mailadresse'/>
 						<input 
 							id='textarea'
 							type='textarea' 
-							name='gb_entry' 
+							name='gbEntry' 
 							placeholder='Hinterlasse einen Gästebucheintrag'
 						/>
 						<input type='submit' name='submit'/>
@@ -55,11 +58,8 @@
 			$firstName =   $_POST['firstName'];
 			$lastName =    $_POST['lastName'];
 			$userEmail =   $_POST['userEmail'];
-			$userEntry =   $_POST['gb_entry'];
+			$userEntry =   $_POST['gbEntry'];
 			$currentTime = date('Y-m-d G:i:s');
-
-			// Connect to database
-			$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
 			// Define queries
 			$dbSelectAll ="SELECT * FROM guestbook";
@@ -118,7 +118,7 @@
 			echo "</table>";
 		}
 
-			mysql_close($dbConnection);
+			mysqli_close($dbConnection);
 
 	?>
 
