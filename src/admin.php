@@ -56,11 +56,7 @@
 			$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
 			// Query
-			$dbSelectAllUsers = "SELECT 
-									guestbookUser.firstName AS firstName,
-									guestbookUser.lastName AS lastName,
-									guestbookUser.userEmail AS userEmail,
-									guestbookUser.userEntryKey AS entryKey,
+			$dbSelectAllUsers = "SELECT *
 									FROM guestbookUser ;";
 			
 			$users = mysqli_query($dbConnection, $dbSelectAllUsers);
@@ -71,7 +67,7 @@
 				// Temporarily store data 
 				$fullName = $data['firstName']." ".$data['lastName'];
 				$userEmail = $data['userEmail'];
-				$userKey = $data['entryKey'];
+				$userKey = $data['userEntryKey'];
 
 				// Print user info
 				echo "<h1>$fullName</h1>";
