@@ -51,10 +51,14 @@
 									'$id' ) ;";
 
 			if (mysqli_query($dbConnection, $dbInsertEntry)) {
+				echo mysqli_error($dbConnection);
 				echo "Eintrag wurde erfolgreich gespeichert";
 			}
 
 			mysqli_close($dbConnection);
+
+			// Delete session variables
+			session_destroy();
 
 
 		}
