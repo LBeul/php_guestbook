@@ -95,7 +95,7 @@ func getDate(n int) string {
 
 // generate query creating a student
 func generateQuery(s student) string {
-	return "INSERT INTO guestbookUser \nVALUES (\n\"" + s.firstName + "\", \n\"" + s.lastName + "\", \n\"" + s.email + "\", \n\"" + s.getKey() + "\" ) ;"
+	return "INSERT INTO guestbookUser \nVALUES (\n\"" + s.firstName + "\", \n\"" + s.lastName + "\", \n\"" + s.email + "\", \n\"" + s.getKey() + "\", \n\"root\" ) ;"
 
 }
 
