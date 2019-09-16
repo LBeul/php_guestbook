@@ -28,6 +28,9 @@
 		// Button function to keep clear code 
 		function deleteEntry($id) {
 
+			// Connect to database
+			$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
+
 			// Delete query 
 			$dbDeleteEntry = "DELETE FROM guestbookEntry 
 								WHERE guestbookEntry.ID = $id ;";
