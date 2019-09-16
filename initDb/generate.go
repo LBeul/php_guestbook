@@ -34,7 +34,9 @@ func main() {
 	class = append(class, newStudent("Jason", "Arndt"))
 	class = append(class, newStudent("Clevie", "Mundele"))
 	class = append(class, newStudent("Nikita", "Railan"))
+	class = append(class, newStudent("Dana", "Voigtlaender"))
 	class = append(class, newStudent("Pauline", "Schall"))
+	class = append(class, newStudent("Lorenz", "Kuehnel"))
 
 	// iterate over class and print the queries
 	for _, member := range class {
