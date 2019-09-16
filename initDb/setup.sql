@@ -61,7 +61,7 @@ INSERT INTO guestbookEntry VALUES (
 ;
 
 INSERT INTO guestbookEntry VALUES (
-	"Woher wussten die Menschen, die die Uhr erfunden, wie vile Uhr wir gerade hatten?",
+	"Woher wussten die Menschen, die die Uhr erfunden, wie viel Uhr wir gerade hatten?",
 	"donaldsaBitch",
 	"2019-09-06 11:32:53",
 	"3"
