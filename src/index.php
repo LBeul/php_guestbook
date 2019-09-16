@@ -61,13 +61,24 @@
 			$userEntry =   $_POST['gbEntry'];
 			$currentTime = date('Y-m-d G:i:s');
 
-			$dbInsertUserInput = "INSERT INTO guestbookEntry VALUES (
-				'$firstName',
-				'$lastName', 
-				'$userEmail', 
-				'$userEntry',
-				'$currentTime'
-			);";
+
+			// Setup query
+			$dbGetUser = "SELECT *
+							FROM guestbookUser
+							WHERE '$firstName' = firstName AND
+									'$lastName' = lastName AND
+									'$userEmail' = userEmail ;" ;
+
+			// Execute query
+			$resDbGetUser = mysqli_query($dbConnection, $dbGetUser);
+
+			
+			// Check if user exists in the database
+			if (mysqli_num_rows($resDbGetUser) == 0) {
+				echo " tja ";
+			} else {
+				echo "hallo du ";
+			}
 
 
 			// Insert user input into database
