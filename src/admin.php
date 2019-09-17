@@ -95,7 +95,7 @@
 					echo mysqli_error($dbConnection);
 
 					// Open table
-					echo "<div>
+					echo "<div class='adminOverview' id='$userKey'>
 						<table border>";
 
 					// Table head 
@@ -171,7 +171,7 @@
 	// logout and close page
 	if(!isset($_POST['logout'])) {
 		echo "	<form method='post' action=''>
-					<input type='submit' name='logout'>
+					<input type='submit' name='logout' value='Abmelden'>
 				</form>";
 	} else {
 		session_destroy();
