@@ -77,9 +77,11 @@
 					$userEmail = $data['userEmail'];
 					$userKey = $data['userEntryKey'];
 
+					echo "<div class='adminOverviewDiv' id='$userKey'>";
+
 					// Print user info
 					echo "<h1>$fullName</h1>";
-					echo "<ul>
+					echo "<ul class='adminOverviewList'>
 							<li>".bold("E-Mail").": <a href=mailto:$userEmail>$userEmail</a></li>
 							<li>".bold("Key").": $userKey</li>
 						</ul>";
@@ -95,8 +97,7 @@
 					echo mysqli_error($dbConnection);
 
 					// Open table
-					echo "<div class='adminOverview' id='$userKey'>
-						<table border>";
+					echo "<table border class='adminOverviewTable'>";
 
 					// Table head 
 					echo "<tr>";
