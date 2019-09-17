@@ -175,7 +175,7 @@
 				</form>";
 	} else {
 		session_destroy();
-		header("Location: index.php");
+		echo "<script>window.close();</script>";
 	}
 
 	?>
