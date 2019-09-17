@@ -88,7 +88,8 @@
 
 					// Print all user's entries
 					$dbSelectAllEntries = "SELECT * FROM guestbookEntry
-											WHERE userEntryKey = '$userKey' ;";
+											WHERE userEntryKey = '$userKey' 
+											ORDER BY entryDate ;";
 
 
 
