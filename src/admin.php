@@ -160,11 +160,11 @@
 	} 
 
 		} else {
-			echo "falsches passwort";
+			echo "<h1> Falsches Passwort </h1>";
 		}
 
 	} else {
-		echo "kein Passwort eingegeben";
+		echo "<h1> Nicht angemeldet </h1>";
 	}
 
 	mysqli_close($dbConnection);
@@ -172,13 +172,11 @@
 	// logout and close page
 	if(!isset($_POST['logout'])) {
 		echo "	<form method='post' action=''>
-					<input type='submit' name='logout' value='Abmelden'>
+					<input type='submit' name='logout' value='Abmelden' id='logoutButton'>
 				</form>";
 	} else {
 		session_destroy();
-		
-		// Refresh page
-		echo "<meta http-equiv='refresh' content='1'>";
+
 	}
 
 	?>
