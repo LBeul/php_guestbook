@@ -6,6 +6,11 @@
 </head>
 <body>
 	<?php
+		// Clear session
+		if (session_status() == PHP_SESSION_ACTIVE) {
+			session_destroy();
+		}
+	
 		if(!isset($_POST["submit"])) {
 
 			echo "

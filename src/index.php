@@ -7,6 +7,11 @@
 </head>
 <body>
 	<?php
+	
+		// Clear session
+		if (session_status() == PHP_SESSION_ACTIVE) {
+			session_destroy();
+		}
 
 		// Connect to database
 		$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
