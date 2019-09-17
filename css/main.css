@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Poppins:400,800&display=swap');
+
+body {
+  margin:0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight:normal;
+  direction:ltr;
+  background:white;
+}
+.container {
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+
+#logo {
+  margin:0 auto;
+  font-family: 'Poppins', sans-serif;
+  font-size:60px;
+  font-weight: 800;
+  text-align:center;
+  color:darkgray;
+  -webkit-transition:0.2s ease all;
+     -moz-transition:0.2s ease all;
+      -ms-transition:0.2s ease all;
+       -o-transition:0.2s ease all;
+          transition:0.2s ease all;
+}
+
+#logo:hover {
+  color: #39e15d;
+}
+
+
+/*
+
+COLOR SETTINGS
+
+white: #ffffff,
+gray-lighter: #e4e5e5
+gray-light: #d1d2d2
+gray: #bebfbf
+gray-dark: #969797
+gray-darker: #6f7070
+gray-darkest: #484949
+black: #202121
+
+brand: #0eafa5
+brand-dark: #1c5450
+
+danger-light: #ffd8d2
+danger: #e65f56
+danger-dark: #6e322d
+
+*/

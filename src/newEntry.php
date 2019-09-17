@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Verfasse deinen Feedbackbeitrag</title>
+	<title>Neues Feedback</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/error.css">
+	<link rel="stylesheet" type="text/css" href="../css/entryEdit.css">
 </head>
 <body>
+	<div class="container">
 	<?php
 
 		session_start();
 
 
-		// if not logged in 
+		echo "<h1 id='logo'>TeacherFeedback</h1>";
+
+		// If not logged in 
 		if (!isset($_SESSION['firstName']) || !isset($_SESSION['lastName']) || !isset($_SESSION['userEntryKey'])) {
-			echo "<h1>Bitte einloggen :)</h1>";
-			echo "<a href='index.php'> Hier </a>";
+			echo "
+				<div class='error'>
+					Hoppla, du hast doch bereis etwas eigetragen!<br/>
+					<a class='retry-link' href='index.php'> Erneut anmelden </a>
+				</div>";
 
 		} else {
 
@@ -21,22 +30,26 @@
 			$lastName = $_SESSION['lastName'];
 			$userKey = $_SESSION['userEntryKey'];
 
-			echo "<h1>Hallo $firstName</h1>";
+			echo "<h2>Hallo $firstName,</h2>";
 
 			if (!isset($_POST['submit'])) {
 
 				// Setup the formular
-				echo " <form method='post' action=''>
-							<h1> Tippe dein Eintrag ein </h1>
-							<input 
-								id='textarea'
-								type='textarea' 
-								name='gbEntry' 
-								placeholder='Hinterlasse einen Gästebucheintrag'
-								required
-							/>
-							<input type='submit' name='submit'/>
-						</form>";
+				echo "
+					<form method='post' action=''>
+						<p>
+							bitte bedenke, dass grundsätzlich jedes Feedback subjektiv ist, da jeder Mensch anders 
+							empfindet und Sachverhalte dementsprechend auch anders wahrnimmt. Bleib deshalb bitte 
+							bei einer reinen Beschreibung deiner Wahrnehmungen und Verbesserungsvorschläge und 
+							vermeide Ausdrücke wie \"Herr XYZ kann gar nicht erklären\" oder dergleichen. 
+							Feedback sollte immer konstruktiv und gerne auch kritisch sein, jedoch niemals 
+							demotivierend!
+						<p>
+
+						<h3>Wie lautet dein heutiges Feedback?</h3>
+						<textarea name='gbEntry' required></textarea>
+						<input type='submit' name='submit'/>
+					</form>";
 
 			} else {
 
@@ -70,5 +83,6 @@
 			}
 		}
 	?>
+	</div>
 </body>
 </html>

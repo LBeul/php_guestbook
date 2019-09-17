@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin-Verwaltung</title>
+	<title>TF Admin LogIn</title>
 	<meta charset="utf-8">
 </head>
 <body>

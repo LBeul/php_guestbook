@@ -1,0 +1,28 @@
+
+.error {
+  color: #6e322d;
+  margin: 15px 0;
+  padding: 15px 10px;
+  width: 500px;
+  outline: none;
+  border: 1px solid #e65f56;
+  background-color: #ffd8d2;
+  border-radius: 20px;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+    -webkit-transition: 0.2s ease all;
+     -moz-transition: 0.2s ease all;
+      -ms-transition: 0.2s ease all;
+       -o-transition: 0.2s ease all;
+          transition: 0.2s ease all;
+}
+.retry-link{
+  color: #e65f56;
+  text-decoration:none;
+}
+
+.retry-link:hover{
+  color: #6e322d;
+}

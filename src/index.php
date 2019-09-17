@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Gästebuch</title>
+	<title>TeacherFeedback</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/form.css">
+	<link rel="stylesheet" type="text/css" href="../css/error.css">
 </head>
 <body>
+
+	<div class='container'>
+		<h1 id='logo'>TeacherFeedback</h1>
 	<?php
 	
 		// Clear session
@@ -20,20 +25,27 @@
 		{
 			//TODO: Swap out Lorem Ipsum for sth useful :D
 			echo "
-				<div class='container' id='form-wrapper'>
-					<header>Willkommen im Gästebuch</header>
-					<div id='description'>
-						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-						invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-						accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-						sanctus est Lorem ipsum dolor sit amet.
+					<div class='description'>
+						Herzlich willkommen bei <strong>TeacherFeedback</strong>, der interaktiven 
+						Feedback-Website für Lehrer und deren Schüler! Du möchtest deinem Lehrer gerne ein
+						aufrichtiges Feedback geben, ohne direkt als Schleimer oder Streber dazustehen? -
+						Dann bist du hier genau richtig! Hau' einfach in die Tasten und lass' deinen
+						Lehrer wissen,wie du seinen Unterricht findest. Anmelden kannst du dich ganz
+						einfach über deineMoodle Daten.
 					</div>
+
 					<form method='POST'>
-						<input type='email' name='userEmail' placeholder='Mailadresse'/>
-						<input type='password' name='userPassword' placeholder='Passwort'/>
-						<input type='submit' name='login'/>
+
+						<label for='userEmail'>Email-Adresse</label>
+						<input type='email' name='userEmail' required/>
+
+						<label for='userPassword'>Passwort</label>
+						<input type='password' name='userPassword' required/>
+
+						<a class='admin-link' href='./adminLogin.php'>Admin-Login</a>
+
+						<input type='submit' name='login' value='Log In'/>
 					</form>
-				</div>
 			";
 		}
 		else
@@ -69,7 +81,11 @@
 			
 			// Check if user exists in the database
 			if (mysqli_num_rows($resDbGetUser) == 0) {
-				echo " <h1>Falsches Passwort oder Email </h1> ";
+				echo "
+					<div class='error'>
+						Scheint als wäre dein Passwort oder deine Email falsch!<br/>
+						<a class='retry-link' href='./index.php'>Versuch's einfach noch einmal :)</a>
+					</div>";
 			} else {
 				
 				// Result as array 
@@ -91,10 +107,6 @@
 			mysqli_close($dbConnection);
 
 	?>
-
-	<!-- TODO: Make a pretty button out of it-->
-	<div class='container'>
-			<a href="./adminLogin.php">Admin-Login</a>
 	</div>
 </body>
 </html>
