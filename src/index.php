@@ -69,7 +69,7 @@
 			
 			// Check if user exists in the database
 			if (mysqli_num_rows($resDbGetUser) == 0) {
-				echo " tja ";
+				echo " <h1>Falsches Passwort oder Email </h1> ";
 			} else {
 				
 				// Result as array 
