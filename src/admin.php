@@ -161,10 +161,12 @@
 
 		} else {
 			echo "<h1> Falsches Passwort </h1>";
+			echo "<a href='adminLogin.php'> Zurück zur Anmeldung </a>";
 		}
 
 	} else {
 		echo "<h1> Nicht angemeldet </h1>";
+		echo "<a href='adminLogin.php'> Zurück zur Anmeldung </a>";
 	}
 
 	mysqli_close($dbConnection);
