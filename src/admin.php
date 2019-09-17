@@ -63,7 +63,7 @@
 				// Database connection
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-				// Query
+				// Query group by date
 				$dbGroupByDate = "SELECT *
 									FROM guestbookEntry 
 									GROUP BY entryDate ;";
@@ -71,65 +71,77 @@
 				$entriesByDate = mysqli_query($dbConnection, $dbGroupByDate);
 				echo mysqli_error($dbConnection);
 
+
 				while($data = mysqli_fetch_assoc($entriesByDate)) {	
 
+
+					$userKey = $data['userEntryKey'];
 					echo "<h2>".$data['entryDate']."</h2>";
 
-					// // Temporarily store data 
-					// $fullName = $data['firstName']." ".$data['lastName'];
-					// $userEmail = $data['userEmail'];
-					 $userKey = $data['userEntryKey'];
 
-					echo "<div class='adminOverviewDiv' id='$userKey'>";
-
-					// Print user info
-					echo "<h1>$fullName</h1>";
-					echo "<ul class='adminOverviewList'>
-							<li>".bold("E-Mail").": <a href=mailto:$userEmail>$userEmail</a></li>
-							<li>".bold("Key").": $userKey</li>
-						</ul>";
-
-					// Print all user's entries
-					$dbSelectAllEntries = "SELECT * FROM guestbookEntry
-											WHERE userEntryKey = '$userEntryKey' ;";
+					// Get users
+					$dbSelectAllEntries = "SELECT * FROM guestbookuser
+											WHERE userEntryKey = '$userKey' ;";
 
 
-
-					// Get all entries
-					$entries = mysqli_query($dbConnection, $dbSelectAllEntries);
+					// Get all users in the group
+					$users = mysqli_query($dbConnection, $dbSelectAllEntries);
 					echo mysqli_error($dbConnection);
 
-					// Open table
-					echo "<table border class='adminOverviewTable'>";
 
-					// Table head 
-					echo "<tr>";
-						echo toTd(bold("Eintrag"));
-						echo toTd(bold("Datum"));
-						echo toTd(bold("ID"));
-						echo toTd(bold("Löschen"));
-					echo "</tr>";
+					while ($users = mysqli_fetch_assoc($users)) {
 
-					// Print all entries
-					while ($entry = mysqli_fetch_assoc($entries)) {
 
-						// Temporarily store all variables
-						$entryText = $entry['entry'];
-						$entryDate = $entry['entryDate'];
-						$entryID = $entry['ID'];
+						// Temporarily store data 
+						$fullName = $users['firstName']." ".$users['lastName'];
+						$userEmail = $users['userEmail'];
+						$userEntryKey = $users['userEntryKey'];
 
-						// TODO: make it pretty :)
-						// Maybe grid or sth
+						echo "<div class='adminOverviewDiv' id='$userKey'>";
+
+						// Print user info
+						echo "<h1>$fullName</h1>";
+						echo "<ul class='adminOverviewList'>
+								<li>".bold("E-Mail").": <a href=mailto:$userEmail>$userEmail</a></li>
+								<li>".bold("Key").": $userKey</li>
+							</ul>";
+
+						// Open table
+						echo "<table border class='adminOverviewTable'>";
+
+						// Table head 
 						echo "<tr>";
-							echo toTd($entryText);
-							echo toTd($entryDate);
-							echo toTd($entryID);
-
-							echo "<td>
-									<input type='checkbox' name=$entryID value=$entryID />
-								</td>";
-
+							echo toTd(bold("Eintrag"));
+							echo toTd(bold("Datum"));
+							echo toTd(bold("ID"));
+							echo toTd(bold("Löschen"));
 						echo "</tr>";
+
+						$dbGetAllUserEntries = "SELECT * FROM guestbookEntry
+													WHERE userEntryKey = '$userEntryKey' ; ";
+
+						$allUserEntriesRes = mysqli_query($dbConnection, $dbGetAllUserEntries);
+
+						// Print all entries
+						while($entry = mysqli_fetch_assoc($allUserEntriesRes)) {
+
+							// Temporarily store all variables
+							$entryText = $entry['entry'];
+							$entryDate = $entry['entryDate'];
+							$entryID = $entry['ID'];
+
+							// TODO: make it pretty :)
+							// Maybe grid or sth
+							echo "<tr>";
+								echo toTd($entryText);
+								echo toTd($entryDate);
+								echo toTd($entryID);
+
+								echo "<td>
+										<input type='checkbox' name=$entryID value=$entryID />
+									</td>";
+
+							echo "</tr>";
 					}
 
 					// Close table
@@ -137,6 +149,7 @@
 							</table>
 						</div>";
 				}
+			}
 
 				// Delete button
 				echo "<input type='submit' name='delete' value='Löschen' />
