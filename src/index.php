@@ -4,7 +4,7 @@
 	<title>TeacherFeedback</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../css/form.css">
+	<link rel="stylesheet" type="text/css" href="../css/userForm.css">
 	<link rel="stylesheet" type="text/css" href="../css/error.css">
 </head>
 <body>
@@ -30,8 +30,8 @@
 						Feedback-Website für Lehrer und deren Schüler! Du möchtest deinem Lehrer gerne ein
 						aufrichtiges Feedback geben, ohne direkt als Schleimer oder Streber dazustehen? -
 						Dann bist du hier genau richtig! Hau' einfach in die Tasten und lass' deinen
-						Lehrer wissen,wie du seinen Unterricht findest. Anmelden kannst du dich ganz
-						einfach über deineMoodle Daten.
+						Lehrer wissen, wie du seinen Unterricht findest. Anmelden kannst du dich ganz
+						einfach über deine <em>Moodle</em> Zugangsdaten.
 					</div>
 
 					<form method='POST'>

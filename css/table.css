@@ -1,0 +1,74 @@
+table { 
+	width: 750px; 
+	border-collapse: collapse; 
+	margin:50px auto;
+	}
+
+/* Zebra Stripes */
+tr:nth-of-type(odd) { 
+	background: #d8f9d7; 
+	}
+
+th { 
+	background: #39e15d;
+	color: white; 
+	font-weight: bold; 
+	}
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+	}
+
+a{
+  color: #286a31;
+  text-decoration:none;
+}
+
+a:hover{
+  color:darkgray;
+}
+
+.delete-btn {
+  padding:15px 50px;
+  margin: 5px 0;
+  width:300px;
+  border-radius:20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  background: #e65f56;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+.delete-btn:hover {
+  opacity:0.8;
+}
+
+.delete-btn:active {
+  opacity:0.4;
+}
+
+.logout-btn {
+  padding:15px 50px;
+  margin: 5px 0 20px 0;
+  width: 300px;
+  border-radius:20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  background: #286a31;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+.logout-btn:hover {
+  opacity:0.8;
+}
+
+.logout-btn:active {
+  opacity:0.4;
+}

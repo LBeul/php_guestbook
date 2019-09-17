@@ -5,8 +5,13 @@
 <head>
 	<title>TF Admin</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/table.css">
+	<link rel="stylesheet" type="text/css" href="../css/error.css">
 </head>
 <body>
+	<div class='container'>
+		<h1 id='logo'>TeacherFeedback</h1>
 	<?php
 
 		// Open session
@@ -20,6 +25,11 @@
 		// Turns given string into table cell (<td>)
 		function toTd($str) {
 			return "<td>$str</td>";
+		}
+
+		// Turns given string into table header cell (<th>)
+		function toTh($str) {
+			return "<th>$str</th>";
 		}
 
 		// Adds boldness to given string (<b>)
@@ -37,14 +47,14 @@
 			$dbDeleteEntry = "DELETE FROM guestbookEntry 
 								WHERE guestbookEntry.ID = $id ;";
 
-			// Execute 
+			// Execute deletion process
 			if (mysqli_query($dbConnection, $dbDeleteEntry)) {
 				echo "Eintrag wurde erfolgreich gelöscht.";
 
 				// Go back
 				header("Location: admin.php");
 			} else {
-				// FIXME: Remove in production build!
+				// FIXME: Remove error logging in production build!
 				echo mysql_error($dbConnection);
 			}
 		}
@@ -63,13 +73,13 @@
 				// Database connection
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
-				// Query
-				$dbSelectAllUsers = "SELECT *
-										FROM guestbookUser ;";
+				// Query all users
+				$dbSelectAllUsers = "SELECT * FROM guestbookUser ;";
 				
 				$users = mysqli_query($dbConnection, $dbSelectAllUsers);
 				echo mysqli_error($dbConnection);
 
+				// Loop through assoc array containing the user data
 				while($data = mysqli_fetch_assoc($users)) {	
 
 					// Temporarily store data 
@@ -77,38 +87,37 @@
 					$userEmail = $data['userEmail'];
 					$userKey = $data['userEntryKey'];
 
+					// Wrap each user's data into div
 					echo "<div class='adminOverviewDiv' id='$userKey'>";
 
 					// Print user info
-					echo "<h1>$fullName</h1>";
-					echo "<ul class='adminOverviewList'>
-							<li>".bold("E-Mail").": <a href=mailto:$userEmail>$userEmail</a></li>
-							<li>".bold("Key").": $userKey</li>
-						</ul>";
+					echo "
+						<h2>$fullName</h2>
+						<p>".bold("E-Mail").": <a href=mailto:$userEmail>$userEmail</a></p>
+						<p>".bold("Key").": $userKey</p>";
 
-					// Print all user's entries
-					$dbSelectAllEntries = "SELECT * FROM guestbookEntry
-											WHERE userEntryKey = '$userKey' 
-											ORDER BY entryDate ;";
-
-
+					// Print user's entries
+					$dbSelectAllEntries = "SELECT * FROM guestbookEntry WHERE userEntryKey = '$userKey' 
+						ORDER BY entryDate ;";
 
 					// Get all entries
 					$entries = mysqli_query($dbConnection, $dbSelectAllEntries);
 					echo mysqli_error($dbConnection);
 
-					// Open table
-					echo "<table border class='adminOverviewTable'>";
+					// Initialize table
+					echo "<table>";
 
-					// Table head 
-					echo "<tr>";
-						echo toTd(bold("Eintrag"));
-						echo toTd(bold("Datum"));
-						echo toTd(bold("ID"));
-						echo toTd(bold("Löschen"));
-					echo "</tr>";
+					// Generate table head 
+					echo "<thead>";
+						echo "<tr>";
+							echo toTh(bold("Eintrag"));
+							echo toTh(bold("Datum"));
+							echo toTh(bold("ID"));
+							echo toTh(bold("Löschen"));
+						echo "</tr>";
+					echo "</thead>";
 
-					// Print all entries
+					// Loop through entries array
 					while ($entry = mysqli_fetch_assoc($entries)) {
 
 						// Temporarily store all variables
@@ -116,14 +125,13 @@
 						$entryDate = $entry['entryDate'];
 						$entryID = $entry['ID'];
 
-						// TODO: make it pretty :)
-						// Maybe grid or sth
+						// Display varibales in table
 						echo "<tr>";
 							echo toTd($entryText);
 							echo toTd($entryDate);
 							echo toTd($entryID);
-
-							echo "<td>
+							echo "
+								<td>
 									<input type='checkbox' name=$entryID value=$entryID />
 								</td>";
 
@@ -137,20 +145,23 @@
 				}
 
 				// Delete button
-				echo "<input type='submit' name='delete' value='Löschen' />
-					</form>";
+				echo "<input class='delete-btn' type='submit' name='delete' value='Ausgewählte Einträge löschen' />";
+
+			echo "</form>";
 		} else {
 			// Check which entries are to be deleted
 
 			// SQL query
 			$dbGetAllEntries = "SELECT ID FROM guestbookEntry ;";
-		
+
+			// Query the data and listen for errors
 			$allEntriesKeys = mysqli_query($dbConnection, $dbGetAllEntries);
 			echo mysqli_error($dbConnection);
 
+			// Loop through all entries looking for those marked to be deleted
 			while($entry = mysqli_fetch_assoc($allEntriesKeys)) {
 
-				// Validate if checked
+				// Validate if "delete" checked
 				if (isset($_POST[$entry['ID']]) && $_POST[$entry['ID']] == $entry['ID']) {
 
 					// If so -> delete entry
@@ -158,32 +169,42 @@
 				}
 			}
 
-	} 
+		} 
+
+		// Display logout button if isn't logged out yet
+		if(!isset($_POST['logout'])) {
+			echo "	
+				<form method='post' action=''>
+						<input type='submit' name='logout' value='Abmelden' class='logout-btn'>
+				</form>";
+		} else {
+			session_destroy();
+			header("Location: index.php");
+		}
+
 
 		} else {
-			echo "<h1> Falsches Passwort </h1>";
-			echo "<a href='adminLogin.php'> Zurück zur Anmeldung </a>";
+			echo "
+			<div class='error'>
+				<p> Falsches Passwort </p>
+				<a class='retry-link' href='adminLogin.php'> Zurück zur Anmeldung </a>
+			</div>";
 		}
 
 	} else {
-		echo "<h1> Nicht angemeldet </h1>";
-		echo "<a href='adminLogin.php'> Zurück zur Anmeldung </a>";
+		echo "
+		<div class='error'>
+			<p>Du bist leider nicht angemeldet!</p>
+			<a class='retry-link' href='adminLogin.php'> Zur Anmeldung </a>
+		</div>";
 	}
 
+	// Close db connection
 	mysqli_close($dbConnection);
 
-	// logout and close page
-	if(!isset($_POST['logout'])) {
-		echo "	<form method='post' action=''>
-					<input type='submit' name='logout' value='Abmelden' id='logoutButton'>
-				</form>";
-	} else {
-		session_destroy();
-
-	}
 
 	?>
-
+</div>
 
 </body>
 </html>
