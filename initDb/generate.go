@@ -92,8 +92,8 @@ func getTime() int64 {
 }
 
 // get timestamp
-func getDate(n int) string {
-	return fmt.Sprintf("2019-09-06 11:30:%d", n)
+func getDate() string {
+	return fmt.Sprintf("2019-09-06")
 }
 
 // generate query creating a student
@@ -103,8 +103,8 @@ func generateQuery(s student) string {
 }
 
 // generate "not automatically generated" entries
-func generateQueryEntry(s student, n int) string {
-	return "INSERT INTO guestbookEntry \nVALUES (\n" + "\"Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.\",\n" + "\"" + s.getKey() + "\"" + ",\n\"" + getDate(n) + "\",\n" + fmt.Sprintf("\"%d\"", getTime()) + "\n) ;"
+func generateQueryEntry(s student) string {
+	return "INSERT INTO guestbookEntry \nVALUES (\n" + "\"Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.\",\n" + "\"" + s.getKey() + "\"" + ",\n\"" + getDate() + "\",\n" + fmt.Sprintf("\"%d\"", getTime()) + "\n) ;"
 }
 
 // write the queries into a .sql file

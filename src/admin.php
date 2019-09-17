@@ -64,18 +64,21 @@
 				$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
 				// Query
-				$dbSelectAllUsers = "SELECT *
-										FROM guestbookUser ;";
+				$dbGroupByDate = "SELECT *
+									FROM guestbookEntry 
+									GROUP BY entryDate ;";
 				
-				$users = mysqli_query($dbConnection, $dbSelectAllUsers);
+				$entriesByDate = mysqli_query($dbConnection, $dbGroupByDate);
 				echo mysqli_error($dbConnection);
 
-				while($data = mysqli_fetch_assoc($users)) {	
+				while($data = mysqli_fetch_assoc($entriesByDate)) {	
 
-					// Temporarily store data 
-					$fullName = $data['firstName']." ".$data['lastName'];
-					$userEmail = $data['userEmail'];
-					$userKey = $data['userEntryKey'];
+					echo "<h2>".$data['entryDate']."</h2>";
+
+					// // Temporarily store data 
+					// $fullName = $data['firstName']." ".$data['lastName'];
+					// $userEmail = $data['userEmail'];
+					 $userKey = $data['userEntryKey'];
 
 					echo "<div class='adminOverviewDiv' id='$userKey'>";
 
@@ -88,7 +91,7 @@
 
 					// Print all user's entries
 					$dbSelectAllEntries = "SELECT * FROM guestbookEntry
-											WHERE userEntryKey = '$userKey' ;";
+											WHERE userEntryKey = '$userEntryKey' ;";
 
 
 
