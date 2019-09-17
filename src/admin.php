@@ -175,7 +175,9 @@
 				</form>";
 	} else {
 		session_destroy();
-		echo "<script>window.close();</script>";
+		
+		// Refresh page
+		echo "<meta http-equiv='refresh' content='1'>";
 	}
 
 	?>
