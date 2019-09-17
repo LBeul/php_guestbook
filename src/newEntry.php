@@ -20,7 +20,7 @@
 		if (!isset($_SESSION['firstName']) || !isset($_SESSION['lastName']) || !isset($_SESSION['userEntryKey'])) {
 			echo "
 				<div class='error'>
-					Hoppla, du hast doch bereis etwas eigetragen!<br/>
+					Hoppla, bitte melde dich zuerst mit deinen Zugangsdaten an!<br/>
 					<a class='retry-link' href='index.php'> Erneut anmelden </a>
 				</div>";
 
