@@ -15,7 +15,7 @@ CREATE TABLE guestbookUser (
 CREATE TABLE guestbookEntry (
 	entry LONGTEXT,
 	userEntryKey VARCHAR(256), 
-	entryDate TIMESTAMP,
+	entryDate DATE,
 	ID VARCHAR(256)
 )
 ;
@@ -211,183 +211,183 @@ INSERT INTO guestbookEntry
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "LauraHerringBoi",
-"2019-09-06 11:30:0",
-"1568727517072"
+"2019-09-06",
+"1568739504921"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "AnnaJungBoi",
-"2019-09-06 11:30:1",
-"1568727517193"
+"2019-09-06",
+"1568739505032"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "SaraFroehlichBoi",
-"2019-09-06 11:30:2",
-"1568727517273"
+"2019-09-06",
+"1568739505102"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "LouisBeulBoi",
-"2019-09-06 11:30:3",
-"1568727517360"
+"2019-09-06",
+"1568739505184"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "BartoszBurgielBoi",
-"2019-09-06 11:30:4",
-"1568727517468"
+"2019-09-06",
+"1568739505288"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "TimZirfasBoi",
-"2019-09-06 11:30:5",
-"1568727517506"
+"2019-09-06",
+"1568739505327"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "KaiSturmBoi",
-"2019-09-06 11:30:6",
-"1568727517552"
+"2019-09-06",
+"1568739505372"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "Sarada MataBoi",
-"2019-09-06 11:30:7",
-"1568727517613"
+"2019-09-06",
+"1568739505433"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "KatharinaNapiontekBoi",
-"2019-09-06 11:30:8",
-"1568727517695"
+"2019-09-06",
+"1568739505509"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "JarekZielinskiBoi",
-"2019-09-06 11:30:9",
-"1568727517717"
+"2019-09-06",
+"1568739505530"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "AnnaRangnauBoi",
-"2019-09-06 11:30:10",
-"1568727517834"
+"2019-09-06",
+"1568739505646"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "MelisaYomraliogluBoi",
-"2019-09-06 11:30:11",
-"1568727517865"
+"2019-09-06",
+"1568739505678"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "ChristinaPfeiferBoi",
-"2019-09-06 11:30:12",
-"1568727517952"
+"2019-09-06",
+"1568739505760"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "JanaMeudtBoi",
-"2019-09-06 11:30:13",
-"1568727518065"
+"2019-09-06",
+"1568739505870"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "TimHeuzerothBoi",
-"2019-09-06 11:30:14",
-"1568727518113"
+"2019-09-06",
+"1568739505919"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "EstherBrauerBoi",
-"2019-09-06 11:30:15",
-"1568727518218"
+"2019-09-06",
+"1568739506013"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "JohannStruederBoi",
-"2019-09-06 11:30:16",
-"1568727518250"
+"2019-09-06",
+"1568739506045"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "JasonArndtBoi",
-"2019-09-06 11:30:17",
-"1568727518318"
+"2019-09-06",
+"1568739506114"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "ClevieMundeleBoi",
-"2019-09-06 11:30:18",
-"1568727518376"
+"2019-09-06",
+"1568739506171"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "NikitaRailanBoi",
-"2019-09-06 11:30:19",
-"1568727518402"
+"2019-09-06",
+"1568739506198"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "DanaVoigtlaenderBoi",
-"2019-09-06 11:30:20",
-"1568727518518"
+"2019-09-06",
+"1568739506313"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "PaulineSchallBoi",
-"2019-09-06 11:30:21",
-"1568727518606"
+"2019-09-06",
+"1568739506404"
 ) ;
 
 INSERT INTO guestbookEntry 
 VALUES (
 "Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.",
 "LorenzKuehnelBoi",
-"2019-09-06 11:30:22",
-"1568727518655"
+"2019-09-06",
+"1568739506453"
 ) ;
 

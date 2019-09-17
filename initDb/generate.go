@@ -48,12 +48,12 @@ func main() {
 	out = append(out, []byte("\n\n")...)
 
 	// generate entries
-	for n, member := range class {
+	for _, member := range class {
 
 		// sleep -> generation to fast -> repeating keys
 		time.Sleep(time.Duration(rand.Intn(100) + 20) * time.Millisecond)
 
-		out = append(out, []byte(generateQueryEntry(member, n))...)
+		out = append(out, []byte(generateQueryEntry(member))...)
 		out = append(out, []byte("\n\n")...)
 
 	}
