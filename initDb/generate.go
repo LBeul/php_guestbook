@@ -11,9 +11,9 @@ func main() {
 	out := []byte{}
 
 	// create students
-
 	class := []student{}
 
+	// setup class
 	class = append(class, newStudent("Laura", "Herring"))
 	class = append(class, newStudent("Anna", "Jung"))
 	class = append(class, newStudent("Sara", "Froehlich"))
@@ -44,13 +44,14 @@ func main() {
 		out = append(out, []byte("\n\n")...)
 	}
 
+	// add whitespace
 	out = append(out, []byte("\n\n")...)
 
 	// generate entries
 	for n, member := range class {
 
-		// sleep -> generation to fast :)
-		time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
+		// sleep -> generation to fast -> repeating keys
+		time.Sleep(time.Duration(rand.Intn(100) + 20) * time.Millisecond)
 
 		out = append(out, []byte(generateQueryEntry(member, n))...)
 		out = append(out, []byte("\n\n")...)
@@ -59,7 +60,7 @@ func main() {
 
 	write(out)
 
-	fmt.Println("dun")
+	fmt.Println("done")
 
 }
 
@@ -106,6 +107,7 @@ func generateQueryEntry(s student, n int) string {
 	return "INSERT INTO guestbookEntry \nVALUES (\n" + "\"Herr Weyer ist der Allerbeste! Das ist kein automatisch generierter Eintrag.\",\n" + "\"" + s.getKey() + "\"" + ",\n\"" + getDate(n) + "\",\n" + fmt.Sprintf("\"%d\"", getTime()) + "\n) ;"
 }
 
+// write the queries into a .sql file
 func write(data []byte) {
 	err := ioutil.WriteFile("entries.sql", data, 0064)
 
