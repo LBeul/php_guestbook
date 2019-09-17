@@ -8,8 +8,7 @@
 </head>
 <body>
 	<?php
-
-
+	
 		// Database connection
 		$dbConnection = mysqli_connect("localhost", "root", "", "bbs");
 
@@ -46,6 +45,12 @@
 				echo mysql_error($dbConnection);
 			}
 		}
+
+
+		// verify if logged in 
+		session_start();
+		if (isset($_SESSION['adminPassword'])) {
+			if ($_SESSION['adminPassword'] == "root") {
 
 		if (!isset($_POST['delete'])) {
 
@@ -149,9 +154,17 @@
 		}
 
 	}
+			} else {
+				echo "bitte einloggen :)";
+			}
+		} else {
+			echo "bitte einloggen :)";
+		}
+
+
 
 	mysqli_close($dbConnection);
-
+	session_destroy();
 	?>
 </body>
 </html>

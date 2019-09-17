@@ -18,8 +18,14 @@
 			<form/>";
 
 		} else {
-			$password = $_POST['password'];
 			
+			// store password in session
+			session_start();
+			
+			$password = $_POST['password'];
+			$_SESSION['adminPassword'] = $password;
+
+
 			// If password is wrong
 			if($password != "root") {
 				echo "<h1>Falsches Passwort</h1>";
