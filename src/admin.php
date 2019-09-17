@@ -166,6 +166,20 @@
 
 	mysqli_close($dbConnection);	
 
+	// logout
+	if (!isset($_POST['logout'])) {
+		echo "	<form method='post' action=''>
+					<input type='submit' name='logout'/>
+				</form>"
+		} else {
+				
+			// clear session
+			session_destroy();
+		}
+	
+	}
 	?>
+
+
 </body>
 </html>
