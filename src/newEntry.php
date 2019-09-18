@@ -75,8 +75,8 @@
 				if (mysqli_query($dbConnection, $dbInsertEntry)) {
 					echo mysqli_error($dbConnection);
 					echo "
-					<div class='success'> <br/>
-						Eintrag wurde erfolgreich gespeichert
+					<div class='success'>
+						Eintrag wurde erfolgreich gespeichert  <br/>
 						<a class='success-link' href='./index.php'>Zurück zum LogIn</a>
 					</div>";
 				}
