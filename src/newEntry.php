@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/error.css">
 	<link rel="stylesheet" type="text/css" href="../css/entryEdit.css">
+	<link rel="stylesheet" type="text/css" href="../css/success.css">
 </head>
 <body>
 	<div class="container">
@@ -73,7 +74,11 @@
 
 				if (mysqli_query($dbConnection, $dbInsertEntry)) {
 					echo mysqli_error($dbConnection);
-					echo "Eintrag wurde erfolgreich gespeichert";
+					echo "
+					<div class='success'> <br/>
+						Eintrag wurde erfolgreich gespeichert
+						<a class='success-link' href='./index.php'>Zurück zum LogIn</a>
+					</div>";
 				}
 
 				mysqli_close($dbConnection);
